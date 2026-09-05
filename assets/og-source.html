@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- Source for og-image.png. Render at exactly 1200x630 and screenshot it.
+     See README, "Regenerating the social card". -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG card source</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 1200px; height: 630px;
+    background: #F5F7FA;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: #55606F;
+    overflow: hidden;
+    position: relative;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(18,22,28,.45) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(18,22,28,.45) 1px, transparent 1px);
+    background-size: 84px 84px;
+    opacity: .2;
+    -webkit-mask-image: radial-gradient(110% 90% at 30% 0%, #000 30%, transparent 80%);
+  }
+  .glow {
+    position: absolute; top: -220px; right: -160px;
+    width: 780px; height: 780px;
+    background: radial-gradient(circle, rgba(29,37,69,.09) 0%, transparent 62%);
+  }
+  .inner { position: relative; padding: 58px 80px 52px; height: 100%; display: flex; flex-direction: column; }
+  .top { display: flex; align-items: center; gap: 14px; }
+  .top b { font-family: "Space Grotesk", sans-serif; font-size: 21px; letter-spacing: .14em; color: #12161C; }
+  .eyebrow {
+    margin-top: 62px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px; letter-spacing: .26em; color: #1D2545;
+    display: flex; align-items: center; gap: 14px;
+    white-space: nowrap;
+  }
+  .eyebrow i { display: block; width: 34px; height: 1px; background: #1D2545; }
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 80px; line-height: .98; letter-spacing: -.035em;
+    color: #12161C; margin-top: 20px;
+  }
+  h1 span { color: transparent; -webkit-text-stroke: 1.6px #2E3969; }
+  p { margin-top: 22px; font-size: 22px; line-height: 1.45; max-width: 42ch; }
+  .hud {
+    margin-top: auto;
+    border-top: 1px solid rgba(18,22,28,.10);
+    padding-top: 20px;
+    display: flex; gap: 44px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px; letter-spacing: .16em; color: #68707E;
+  }
+  .hud b { color: #12161C; font-weight: 500; }
+  .hud .ok { color: #0F7A5E; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="inner">
+    <div class="top">
+      <b>AJ COMPENDIO</b>
+    </div>
+
+    <p class="eyebrow"><i></i>AI SYSTEMS // AUTOMATION ENGINEER</p>
+    <h1>Building<br><span>Autonomous</span><br>AI Systems</h1>
+    <p>AI agents that answer, decide, and write to real calendars and databases.</p>
+
+    <div class="hud">
+      <div><b>AI AGENTS</b></div>
+      <div><b>RAG &amp; RETRIEVAL</b></div>
+      <div><b>N8N AUTOMATION</b></div>
+      <div><b class="ok">TAGUIG, PH</b></div>
+    </div>
+  </div>
+</body>
+</html>

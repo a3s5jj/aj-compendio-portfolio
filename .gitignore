@@ -1,0 +1,8 @@
+# portrait.jpg and AJ-Compendio-CV.pdf are deliberately NOT ignored.
+# Both ship with the site, and the CV is the public-safe copy with the
+# phone number removed. Ignoring them would deploy a broken download
+# button and an empty portrait frame.
+
+.DS_Store
+Thumbs.db
+node_modules/

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- Source for AJ-Compendio-CV.pdf. Content mirrors the frozen application resume.
+     Two deliberate differences from the private copy:
+       1. no phone number (this file is served publicly)
+       2. employer shown as "Independent"
+     See README, "Regenerating the resume PDF". -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Al John Compendio CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  @page { size: A4; margin: 12mm 13mm; }
+
+  * { box-sizing: border-box; margin: 0; }
+
+  body {
+    font-family: "IBM Plex Sans", Arial, sans-serif;
+    font-size: 8.7pt;
+    line-height: 1.27;
+    color: #12161C;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: #2E3969; text-decoration: none; }
+
+  header { border-bottom: 2px solid #1D2545; padding-bottom: 6px; margin-bottom: 9px; }
+  h1 { font-size: 19pt; letter-spacing: -.02em; color: #1D2545; line-height: 1.05; }
+  .role { font-size: 9.8pt; font-weight: 600; color: #2E3969; margin-top: 3px; }
+  .contact { font-size: 8.8pt; color: #55606F; margin-top: 6px; }
+  .contact span + span::before { content: "  |  "; color: #68707E; }
+
+  h2 {
+    font-size: 8.6pt;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: #1D2545;
+    border-bottom: 1px solid rgba(18,22,28,.14);
+    padding-bottom: 3px;
+    margin: 7px 0 4px;
+  }
+
+  .job { margin-bottom: 6px; }
+  .job:last-child { margin-bottom: 0; }
+  .job__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .job__title { font-size: 9.4pt; font-weight: 700; color: #1D2545; }
+  .job__when { font-size: 8.5pt; color: #55606F; white-space: nowrap; }
+  .job__org { font-size: 9pt; font-weight: 600; color: #2E3969; margin-bottom: 3px; }
+
+  ul { margin: 0; padding-left: 14px; }
+  li { margin-bottom: 1.5px; }
+  li::marker { color: #2E3969; }
+
+  .kv { margin-bottom: 1.5px; }
+  .kv b { color: #1D2545; font-weight: 600; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+  .muted { color: #55606F; }
+  .tight li { margin-bottom: 1.5px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Al John Compendio</h1>
+  <p class="role">AI Automation Engineer &nbsp;|&nbsp; Data Analyst</p>
+  <p class="contact">
+    <span>Taguig, Metro Manila, Philippines</span>
+    <span><a href="mailto:aljohncompendio@gmail.com">aljohncompendio@gmail.com</a></span>
+    <span><a href="https://www.linkedin.com/in/al-john-compendio-60321537b/">linkedin.com/in/al-john-compendio</a></span>
+    <span><a href="https://github.com/a3s5jj">github.com/a3s5jj</a></span>
+  </p>
+</header>
+
+<h2>Professional Summary</h2>
+<p>
+  AI automation engineer and data analyst who builds production workflow systems and turns raw
+  data into decisions. Experienced in n8n workflow automation, AI agents with retrieval-augmented
+  generation (RAG), REST API integration, and Python and SQL data pipelines, alongside dashboard
+  development in Tableau and Excel. Google Data Analytics certified. Recent work includes a
+  multi-channel AI agent that handles booking conversations end to end and a lead generation
+  pipeline that screened 2,297 raw records into 441 qualified accounts.
+</p>
+
+<h2>Professional Experience</h2>
+
+<div class="job">
+  <div class="job__head">
+    <span class="job__title">Freelance AI Automation Developer &nbsp;|&nbsp; AI Agent &amp; Data Systems</span>
+    <span class="job__when">June 2026 &ndash; Present</span>
+  </div>
+  <p class="job__org">Independent</p>
+  <ul>
+    <li>Built a 65-node n8n AI agent that handles customer conversations across Facebook Messenger, WhatsApp, and website chat and autonomously books, reschedules, and cancels Google Calendar appointments, validated across 105 end-to-end test executions with zero failures at $0.04 per conversation.</li>
+    <li>Implemented retrieval-augmented generation (RAG) on a Supabase PostgreSQL vector database so the agent answers pricing, hours, and service questions from source documents rather than generating them, with an automated ingestion workflow for new content.</li>
+    <li>Engineered a data pipeline in Node.js and Python that scrapes, deduplicates, enriches, and validates business records from Google Maps, the Facebook Ads Library, and a REST API, screening 2,297 raw listings from three sources into 441 verified, contactable leads.</li>
+    <li>Launched a 3-touch cold email sequence with 4 A/B tested copy variants and per-record personalized openers auto-generated from the scraped dataset, reaching 191 prospects with no per-record copy written by hand.</li>
+    <li>Designed deduplication keys and validation gates for the lead master, enforcing a full source-to-disposition audit trail across a 2,297-row screening log and eliminating 59 duplicate records before outreach.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job__head">
+    <span class="job__title">Real Estate Agent &nbsp;|&nbsp; Market Analysis &amp; Ads Strategy</span>
+    <span class="job__when">August 2024 &ndash; August 2025</span>
+  </div>
+  <p class="job__org">PHirst Park Homes International</p>
+  <ul>
+    <li>Automated daily synchronization of 3,000+ property listings with event-based n8n workflows that updated and removed records across Excel and Google Sheets, replacing 15 hours of manual updating per week.</li>
+    <li>Designed and automated Excel-based sample computations, reducing manual calculation errors by 22% and saving 10+ hours of work per week while improving data reliability.</li>
+    <li>Analyzed pre-selling property markets and executed Facebook Ads campaigns with targeted strategies, boosting conversion rates from 3% to 11%.</li>
+    <li>Developed and executed a Facebook Ads campaign, refining audience targeting to generate leads and successfully convert 2 property sales.</li>
+  </ul>
+</div>
+
+<h2>Skills</h2>
+<p class="kv"><b>AI &amp; Automation:</b> n8n, AI agents, retrieval-augmented generation (RAG), prompt engineering, Claude API, workflow orchestration</p>
+<p class="kv"><b>Programming:</b> Python (Pandas), JavaScript, Node.js, SQL</p>
+<p class="kv"><b>Data &amp; Databases:</b> PostgreSQL, Supabase, vector databases, ETL, data cleaning, deduplication</p>
+<p class="kv"><b>Analytics &amp; Visualization:</b> Tableau, Excel (advanced), Google Sheets, dashboard development, statistical analysis</p>
+<p class="kv"><b>APIs &amp; Integration:</b> REST APIs, webhooks, Google Workspace APIs (Calendar, Sheets, Gmail), Meta Graph API</p>
+<p class="kv"><b>Tools:</b> Git, GitHub, web scraping, Playwright</p>
+<p class="kv"><b>Professional:</b> Project management, A/B testing and campaign analysis, requirements gathering, technical documentation, problem solving</p>
+
+<h2>Projects</h2>
+<div class="job">
+  <p class="job__org" style="margin-bottom:2px">AI Front Desk (n8n + RAG)</p>
+  <ul class="tight">
+    <li>Multi-channel conversational AI agent built on a 65-node n8n workflow, with custom tools for calendar booking, rescheduling, and cancellation.</li>
+    <li>Document-grounded knowledge base using a Supabase vector store, so answers come from source material instead of model recall.</li>
+  </ul>
+</div>
+<div class="job">
+  <p class="job__org" style="margin-bottom:2px">British Airways Reviews 2016&ndash;2023 (Tableau)</p>
+  <ul class="tight">
+    <li>Interactive dashboard using filters, parameters, and calculated fields, built with clean elements for easy interpretation.</li>
+    <li><a href="https://public.tableau.com/app/profile/al.john.compendio/viz/BritishAirwaysReviews_17590476094870/Dashboard1">public.tableau.com/app/profile/al.john.compendio</a></li>
+  </ul>
+</div>
+
+<div class="two">
+  <div>
+    <h2>Education</h2>
+    <p class="kv"><b>Completed coursework toward B.S. Civil Engineering</b><br>
+      <span class="muted">University of Perpetual Help System DALTA</span></p>
+    <p class="kv"><b>Senior High School, STEM</b> &nbsp;<span class="muted">2018&ndash;2020</span><br>
+      <span class="muted">Citi Global College &middot; Graduate</span></p>
+  </div>
+  <div>
+    <h2>Certification &amp; Languages</h2>
+    <p class="kv"><b>Google Data Analytics Professional Certificate</b><br>
+      <span class="muted">Google / Coursera &middot;
+      <a href="https://www.coursera.org/account/accomplishments/specialization/4G6P4F0U3UNL">verify</a></span></p>
+    <p class="kv"><b>Languages:</b> <span class="muted">Tagalog (native), English (professional working proficiency)</span></p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AJ Compendio | AI Automation Engineer</title>
+<meta name="description" content="Al John Compendio builds AI agents that answer, decide and write to real systems. n8n, RAG, and automation pipelines with deterministic guardrails.">
+<meta name="author" content="Al John Compendio">
+<meta name="theme-color" content="#F5F7FA">
+
+<!-- =========================================================================
+     BEFORE DEPLOYING: replace REPLACE-ME.netlify.app with the real domain in
+     the four URLs below, and in robots.txt and sitemap.xml.
+     og:image MUST be an absolute URL. LinkedIn does not resolve relative
+     paths, so a relative one means your share preview renders with no image.
+     ========================================================================= -->
+<link rel="canonical" href="https://REPLACE-ME.netlify.app/">
+<meta property="og:url" content="https://REPLACE-ME.netlify.app/">
+<meta property="og:image" content="https://REPLACE-ME.netlify.app/assets/og-image.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AJ Compendio">
+<meta property="og:title" content="AJ Compendio | AI Automation Engineer">
+<meta property="og:description" content="AI agents that answer, decide and write to real systems. n8n, RAG, and automation pipelines with deterministic guardrails.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AJ Compendio, building autonomous AI systems">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg?v=3" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Only the 5 faces the page actually renders. Verified against computed
+     styles, not guessed: Plex 400, Mono 400/500, Grotesk 600/700. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Al John Compendio",
+  "alternateName": "AJ Compendio",
+  "jobTitle": "Freelance Automation Engineer",
+  "description": "Builds AI agents that read approved knowledge, decide what a message needs, and write the result into real calendars, sheets and databases.",
+  "url": "https://REPLACE-ME.netlify.app/",
+  "image": "https://REPLACE-ME.netlify.app/assets/portrait.jpg",
+  "email": "mailto:aljohncompendio@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Taguig",
+    "addressRegion": "Metro Manila",
+    "addressCountry": "PH"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/al-john-compendio-60321537b/",
+    "https://github.com/a3s5jj",
+    "https://public.tableau.com/app/profile/al.john.compendio"
+  ],
+  "knowsAbout": [
+    "AI agents",
+    "Retrieval-Augmented Generation",
+    "n8n workflow automation",
+    "Prompt engineering",
+    "Data pipelines",
+    "Python",
+    "Node.js",
+    "SQL"
+  ]
+}
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <div class="preloader__name">AJ COMPENDIO</div>
+    <div class="preloader__tag">AI AGENTS &amp; WORKFLOW AUTOMATION</div>
+    <div class="preloader__bar"><span id="preloaderFill"></span></div>
+    <div class="preloader__pct" id="preloaderPct">0%</div>
+  </div>
+</div>
+
+<div class="scrollbar" id="scrollbar" aria-hidden="true"><span id="scrollbarFill"></span></div>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <a href="#hero" class="brand" aria-label="AJ Compendio, back to top">
+    <span>AJ&nbsp;COMPENDIO</span>
+  </a>
+
+  <nav class="nav" id="nav" aria-label="Section navigation">
+    <a href="#hero" class="nav__link is-active">Home</a>
+    <a href="#about" class="nav__link">About</a>
+    <a href="#work" class="nav__link">Projects</a>
+    <a href="#experience" class="nav__link">Experience</a>
+    <a href="#skills" class="nav__link">Skills</a>
+    <a href="#education" class="nav__link">Education</a>
+    <a href="#notes" class="nav__link">Notes</a>
+    <a href="#contact" class="nav__link">Contact</a>
+  </nav>
+
+  <div class="header__clock">
+    <span class="dot" aria-hidden="true"></span>
+    <span id="clock">MNL 00:00:00</span>
+  </div>
+
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <p class="hero__eyebrow reveal" data-reveal>
+        <span class="tick" aria-hidden="true"></span>
+        AI SYSTEMS <span class="sep">//</span> AUTOMATION ENGINEER
+      </p>
+
+      <h1 class="hero__title">
+        <span class="line reveal" data-reveal>Building</span>
+        <span class="line reveal accent" data-reveal>Autonomous</span>
+        <span class="line reveal" data-reveal>AI Systems</span>
+      </h1>
+
+      <p class="hero__type reveal" data-reveal aria-live="off">
+        <span id="typewriter"></span><span class="caret" aria-hidden="true"></span>
+      </p>
+
+      <p class="hero__lede reveal" data-reveal>
+        I build AI agents that do more than reply. They read approved knowledge, decide what
+        a message actually needs, and write the result into real calendars, sheets and
+        databases. The model proposes. Plain workflow code authorizes every write.
+      </p>
+
+      <div class="hero__actions reveal" data-reveal>
+        <a href="#work" class="btn btn--primary">Explore Selected Work <span aria-hidden="true">&rarr;</span></a>
+        <a href="#contact" class="btn">Contact</a>
+        <a href="assets/AJ-Compendio-CV.pdf" class="btn btn--ghost" id="cvLink" download>
+          <span aria-hidden="true">&darr;</span> Download Resume
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__panel reveal" data-reveal>
+      <div class="portrait" id="portrait">
+        <div class="portrait__frame">
+          <p class="portrait__note">PORTRAIT SLOT<br><span>drop assets/portrait.jpg</span></p>
+        </div>
+        <span class="corner tl" aria-hidden="true"></span>
+        <span class="corner tr" aria-hidden="true"></span>
+        <span class="corner bl" aria-hidden="true"></span>
+        <span class="corner br" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ 01 ABOUT ============ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>01 / BIOGRAPHY</p>
+    <h2 class="sec-title reveal" data-reveal>About Me</h2>
+
+    <div class="about">
+      <div class="about__col reveal" data-reveal>
+        <h3 class="about__name">Al John Compendio</h3>
+        <p class="about__role">Freelance Automation Engineer <span class="sep">/</span> Taguig, PH</p>
+        <p>
+          I build AI agents that do more than reply. They read approved knowledge, decide what
+          a message actually needs, and write the result into real calendars, sheets and
+          databases. The model proposes. Plain workflow code authorizes every write.
+        </p>
+        <p>
+          That split is how I work on everything. The model handles language. Every
+          irreversible action stays in code you can read, test and re-run. Systems built that
+          way fail loudly instead of quietly, which is what makes them safe to leave running.
+        </p>
+        <p>
+          The value I bring is the unglamorous half. Demoing an agent is easy. Making one
+          survive retries, bad input and the edge case nobody wrote down is the part that
+          decides whether a team can depend on it.
+        </p>
+      </div>
+
+      <div class="about__col reveal" data-reveal>
+        <blockquote class="quote">
+          A friendly reply that books the wrong day still looks like success. Most failures
+          are silent, so I build to make them loud.
+        </blockquote>
+        <ul class="about__facts">
+          <li><span class="k">BASED</span><span class="v">Taguig, Metro Manila, PH</span></li>
+          <li><span class="k">FOCUS</span><span class="v">AI agents, RAG, n8n automation</span></li>
+          <li><span class="k">STACK</span><span class="v">n8n, Claude API, Supabase, Node.js, Python</span></li>
+          <li><span class="k">STATUS</span><span class="v v--ok">Open to full-time and contract</span></li>
+          <li><span class="k">LANGUAGES</span><span class="v">Tagalog (native), English (professional)</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 WORK ============ -->
+<section class="section section--alt" id="work">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>02 / SELECTED WORK</p>
+    <h2 class="sec-title reveal" data-reveal>AI &amp; Automation Projects</h2>
+    <p class="sec-lede reveal" data-reveal>
+      Four systems that run without a human in the loop. Two are published engineering
+      write-ups, two are runnable code. Every number below comes from a test run I can point at.
+    </p>
+
+    <div class="projects" id="projects">
+
+      <!-- PROJECT 01 -->
+      <article class="project is-open reveal" data-reveal>
+        <h3 class="project__heading">
+        <button class="project__head" aria-expanded="true">
+          <span class="project__idx">PROJECT // 01</span>
+          <span class="project__titles">
+            <span class="project__title">Clinic AI Front Desk</span>
+            <span class="project__sub">Autonomous appointment booking across Messenger, Instagram and web chat</span>
+          </span>
+          <span class="project__toggle" aria-hidden="true"></span>
+        </button>
+        </h3>
+
+        <div class="project__body">
+          <div class="project__cols">
+            <div class="project__story">
+              <h4 class="blk">THE STORY</h4>
+              <p>
+                Clinics lose patients in the gap between a message arriving and someone
+                answering it. I built a receptionist that replies in seconds and writes the
+                booking straight into the clinic's real Google Calendar, with no staff
+                approval step.
+              </p>
+              <h4 class="blk">THE CHALLENGE</h4>
+              <p>
+                The replies were never the hard part. Guaranteeing it never double books,
+                never confuses two patients sharing a phone number, and never invents a
+                clinic policy was. Those failures are silent.
+              </p>
+              <h4 class="blk">THE SOLUTION</h4>
+              <p>
+                The model proposes intent, deterministic branches authorize every write. A
+                generated date table replaced the weekday arithmetic the model kept getting
+                wrong. Event IDs key the bookings, so families sharing a number stay
+                separate. Slots are checked when offered and again before creating. Empty
+                retrieval means unknown, not no, so unsupported questions go to staff.
+              </p>
+              <a class="repo-link is-pending" href="https://github.com/a3s5jj/clinic-ai-frontdesk-case-study" data-repo>
+                <span aria-hidden="true">&#9679;</span> Read the case study
+              </a>
+            </div>
+
+            <div class="project__side">
+              <h4 class="blk">SYSTEM METRICS &amp; TELEMETRY</h4>
+              <div class="metrics">
+                <div class="metric"><span class="metric__v" data-count="105" data-suffix="">0</span><span class="metric__k">End-to-end test runs</span></div>
+                <div class="metric"><span class="metric__v" data-count="0.04" data-prefix="$" data-dec="2">0</span><span class="metric__k">Cost per conversation</span></div>
+                <div class="metric"><span class="metric__v" data-count="0">0</span><span class="metric__k">Double bookings</span></div>
+              </div>
+
+              <h4 class="blk">PIPELINE ARCHITECTURE</h4>
+              <ol class="pipe">
+                <li>Channel normalization (Messenger, Instagram, web)</li>
+                <li>Clinic profile and 14 day date table load</li>
+                <li>Approved knowledge retrieval (pgvector)</li>
+                <li>Model proposes reply and action</li>
+                <li>Deterministic action gate and slot recheck</li>
+                <li>Google Calendar write and verification</li>
+                <li>CRM log, or staff handoff on limits</li>
+              </ol>
+
+              <h4 class="blk">CORE TECH STACK</h4>
+              <ul class="chips">
+                <li>n8n</li><li>Claude API</li><li>Supabase pgvector</li><li>Google Calendar API</li>
+                <li>Google Sheets API</li><li>Meta Graph API</li><li>JavaScript</li><li>Webhooks</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 02 -->
+      <article class="project reveal" data-reveal>
+        <h3 class="project__heading">
+        <button class="project__head" aria-expanded="false">
+          <span class="project__idx">PROJECT // 02</span>
+          <span class="project__titles">
+            <span class="project__title">Dental AI Front Desk</span>
+            <span class="project__sub">Open source n8n template of the same architecture, MIT licensed</span>
+          </span>
+          <span class="project__toggle" aria-hidden="true"></span>
+        </button>
+        </h3>
+
+        <div class="project__body">
+          <div class="project__cols">
+            <div class="project__story">
+              <h4 class="blk">THE STORY</h4>
+              <p>
+                Once the production build proved out, I stripped it to a reusable template
+                and released it under MIT, so the guardrails do not have to be rebuilt from
+                scratch.
+              </p>
+              <h4 class="blk">THE CHALLENGE</h4>
+              <p>
+                Publishing a working system means separating architecture from client. Every
+                credential, resource ID, clinic name and patient record had to come out
+                while the workflow stayed importable and behaved identically.
+              </p>
+              <h4 class="blk">THE SOLUTION</h4>
+              <p>
+                A 78 node front desk plus an 8 node ingestion workflow, a pgvector schema,
+                the booking and escalation safeguards, and offline tests that run with no
+                credentials. It passed secret, email, phone, host and path scans, and
+                imports inactive by default so nothing fires before you have checked it.
+              </p>
+              <a class="repo-link is-pending" href="https://github.com/a3s5jj/dental-ai-frontdesk-oss" data-repo>
+                <span aria-hidden="true">&#9679;</span> View the template
+              </a>
+            </div>
+
+            <div class="project__side">
+              <h4 class="blk">SYSTEM METRICS &amp; TELEMETRY</h4>
+              <div class="metrics">
+                <div class="metric"><span class="metric__v" data-count="78">0</span><span class="metric__k">Workflow nodes</span></div>
+                <div class="metric"><span class="metric__v" data-count="58" data-suffix="/58">0</span><span class="metric__k">Behavior checks passed</span></div>
+                <div class="metric"><span class="metric__v metric__v--text">MIT</span><span class="metric__k">License</span></div>
+              </div>
+
+              <h4 class="blk">PIPELINE ARCHITECTURE</h4>
+              <ol class="pipe">
+                <li>Front desk workflow (78 nodes)</li>
+                <li>Knowledge ingestion workflow (8 nodes)</li>
+                <li>Supabase pgvector schema</li>
+                <li>Deterministic safeguard layer</li>
+                <li>Offline behavior, structure and layout tests</li>
+                <li>Setup and staff operation guides</li>
+              </ol>
+
+              <h4 class="blk">CORE TECH STACK</h4>
+              <ul class="chips">
+                <li>n8n</li><li>Supabase</li><li>pgvector</li><li>PostgreSQL</li>
+                <li>Google Calendar</li><li>Node.js</li><li>Markdown docs</li><li>MIT</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 03 -->
+      <article class="project reveal" data-reveal>
+        <h3 class="project__heading">
+        <button class="project__head" aria-expanded="false">
+          <span class="project__idx">PROJECT // 03</span>
+          <span class="project__titles">
+            <span class="project__title">Dental Lead Qualification</span>
+            <span class="project__sub">A screening pipeline that refuses to call a record usable</span>
+          </span>
+          <span class="project__toggle" aria-hidden="true"></span>
+        </button>
+        </h3>
+
+        <div class="project__body">
+          <div class="project__cols">
+            <div class="project__story">
+              <h4 class="blk">THE STORY</h4>
+              <p>
+                A plausible URL can be the wrong business. A blocked page is not necessarily
+                a dead one. I built a pipeline that treats those as separate problems and
+                refuses to call a record usable until it survives every check.
+              </p>
+              <h4 class="blk">THE CHALLENGE</h4>
+              <p>
+                Lead lists rot when discovery, identity matching, liveness, enrichment and
+                scoring get mixed together. Re-running a score update stacks points. A
+                scraper can finish successfully and still hand you an unusable workbook.
+              </p>
+              <h4 class="blk">THE SOLUTION</h4>
+              <p>
+                Each source gets its own adapter over one shared qualification core.
+                Uncertain, blocked or login gated pages become needs manual review, never
+                facts. Scores reconcile against prior evidence instead of adding twice,
+                weaker enrichment never overwrites a verified value, and paid sources stop
+                for a credit preflight before spending. 2,297 listings screened down to 441
+                contactable leads.
+              </p>
+              <a class="repo-link is-pending" href="https://github.com/a3s5jj/dental-lead-qualification-case-study" data-repo>
+                <span aria-hidden="true">&#9679;</span> Read the case study
+              </a>
+            </div>
+
+            <div class="project__side">
+              <h4 class="blk">SYSTEM METRICS &amp; TELEMETRY</h4>
+              <div class="metrics">
+                <div class="metric"><span class="metric__v" data-count="2297">0</span><span class="metric__k">Listings screened</span></div>
+                <div class="metric"><span class="metric__v" data-count="441">0</span><span class="metric__k">Verified leads</span></div>
+                <div class="metric"><span class="metric__v" data-count="59">0</span><span class="metric__k">Duplicates caught</span></div>
+              </div>
+
+              <h4 class="blk">PIPELINE ARCHITECTURE</h4>
+              <ol class="pipe">
+                <li>Source specific discovery adapters</li>
+                <li>Record normalization and fit check</li>
+                <li>Deduplication gate</li>
+                <li>Public contact discovery</li>
+                <li>Link liveness validation</li>
+                <li>Enrichment and score reconciliation</li>
+                <li>Contactability check and final quality gate</li>
+              </ol>
+
+              <h4 class="blk">CORE TECH STACK</h4>
+              <ul class="chips">
+                <li>Node.js</li><li>Python</li><li>Pandas</li><li>Google Maps</li>
+                <li>Facebook Ads Library</li><li>REST APIs</li><li>CSV / XLSX</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 04 -->
+      <article class="project reveal" data-reveal>
+        <h3 class="project__heading">
+        <button class="project__head" aria-expanded="false">
+          <span class="project__idx">PROJECT // 04</span>
+          <span class="project__titles">
+            <span class="project__title">Document Intake Automation</span>
+            <span class="project__sub">Idempotent filing for Gmail attachments and Telegram receipts</span>
+          </span>
+          <span class="project__toggle" aria-hidden="true"></span>
+        </button>
+        </h3>
+
+        <div class="project__body">
+          <div class="project__cols">
+            <div class="project__story">
+              <h4 class="blk">THE STORY</h4>
+              <p>
+                Document intake breaks the same few ways every time. A retry files the same
+                email twice. An attachment uploads but its row never appears. Each of those
+                looks like a successful run from the outside.
+              </p>
+              <h4 class="blk">THE CHALLENGE</h4>
+              <p>
+                Making retries safe. The system has to run the same window twice and produce
+                the same result, and refuse to fill gaps in a blurry receipt with plausible
+                guesses.
+              </p>
+              <h4 class="blk">THE SOLUTION</h4>
+              <p>
+                Two workflows file documents into Drive and write one row each to Sheets.
+                Attachments process serially, folders are found or created, files are reused
+                rather than re-uploaded. Verified against an isolated sandbox: a second run
+                over the same 48 hour window left every count unchanged.
+              </p>
+              <a class="repo-link is-pending" href="https://github.com/a3s5jj/document-intake-automation" data-repo>
+                <span aria-hidden="true">&#9679;</span> View the repository
+              </a>
+            </div>
+
+            <div class="project__side">
+              <h4 class="blk">SYSTEM METRICS &amp; TELEMETRY</h4>
+              <div class="metrics">
+                <div class="metric"><span class="metric__v" data-count="12" data-suffix="/12">0</span><span class="metric__k">Fixture tests passed</span></div>
+                <div class="metric"><span class="metric__v" data-count="0">0</span><span class="metric__k">Error rows</span></div>
+                <div class="metric"><span class="metric__v" data-count="0">0</span><span class="metric__k">Duplicates on replay</span></div>
+              </div>
+
+              <h4 class="blk">PIPELINE ARCHITECTURE</h4>
+              <ol class="pipe">
+                <li>Labeled email or photo message trigger</li>
+                <li>Message normalization and validation</li>
+                <li>Serial attachment processing</li>
+                <li>Drive folder find or create</li>
+                <li>Reuse or upload file write</li>
+                <li>Sheets row keyed for deduplication</li>
+              </ol>
+
+              <h4 class="blk">CORE TECH STACK</h4>
+              <ul class="chips">
+                <li>n8n</li><li>Gmail API</li><li>Google Drive API</li><li>Google Sheets API</li>
+                <li>Telegram Bot API</li><li>Gemini</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 EXPERIENCE ============ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>03 / EXPERIENCE</p>
+    <h2 class="sec-title reveal" data-reveal>Professional Record</h2>
+    <p class="sec-lede reveal" data-reveal>
+      Building, shipping and maintaining automation that other people depend on.
+    </p>
+
+    <div class="timeline">
+      <article class="job reveal" data-reveal>
+        <div class="job__when">Jun 2026 - Present</div>
+        <div class="job__main">
+          <h3 class="job__title">Freelance Automation Engineer</h3>
+          <p class="job__org">Independent</p>
+          <ul class="job__points">
+            <li>Built a multi channel AI booking agent that answers patient messages on Messenger, Instagram and web chat and autonomously books, reschedules and cancels Google Calendar appointments, validated across 105 end to end test executions at roughly $0.04 per conversation.</li>
+            <li>Implemented retrieval augmented generation on a Supabase PostgreSQL vector database with an automated ingestion workflow, so the agent answers service questions from approved source documents instead of inventing policy.</li>
+            <li>Engineered a Node.js and Python pipeline that scraped, deduplicated, enriched and validated business records from Google Maps, the Facebook Ads Library and a REST API, screening 2,297 raw listings into 441 verified, contactable leads.</li>
+            <li>Launched an automated three touch outreach sequence with four A/B tested variants and personalized openers generated from the scraped dataset, reaching 191 prospects without writing per record copy by hand.</li>
+            <li>Designed validation gates and deduplication keys for a source to disposition audit trail, eliminating 59 duplicate records from a 2,297 row screening log before outreach.</li>
+          </ul>
+          <ul class="chips">
+            <li>n8n</li><li>AI Agents</li><li>RAG</li><li>Claude API</li><li>Supabase</li>
+            <li>Node.js</li><li>Python</li><li>Prompt Engineering</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal" data-reveal>
+        <div class="job__when">Aug 2024 - Aug 2025</div>
+        <div class="job__main">
+          <h3 class="job__title">Real Estate Agent, Market Analysis &amp; Ads Strategy</h3>
+          <p class="job__org">PHirst Park Homes International</p>
+          <ul class="job__points">
+            <li>Built event based n8n automation workflows that synchronized more than 3,000 property listings daily across Excel and Google Sheets, replacing roughly 15 hours of manual updating per week.</li>
+            <li>Analyzed pre-selling property markets and ran targeted Facebook Ads campaigns, improving conversion rates from 3% to 11%.</li>
+            <li>Developed and refined a Facebook Ads campaign that generated leads and converted two property sales.</li>
+            <li>Automated Excel based sample computations, reducing manual calculation errors by 22% and saving more than 10 hours of work per week while improving data reliability.</li>
+          </ul>
+          <ul class="chips">
+            <li>n8n</li><li>Excel Automation</li><li>Google Sheets</li><li>Facebook Ads</li>
+            <li>Market Analysis</li><li>Data Reliability</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 SKILLS ============ -->
+<section class="section section--alt" id="skills">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>04 / ARCHITECTURE &amp; SYNTAX</p>
+    <h2 class="sec-title reveal" data-reveal>Technical Toolkit</h2>
+    <p class="sec-lede reveal" data-reveal>
+      The tools, models and data work I use day to day.
+    </p>
+
+    <div class="skills">
+      <div class="skill reveal" data-reveal>
+        <p class="skill__idx">01 //</p>
+        <h3 class="skill__title">AI Agents &amp; LLM Systems</h3>
+        <ul>
+          <li>AI agent design</li><li>Multi step tool use</li><li>Prompt engineering</li>
+          <li>Claude API</li><li>Guardrails &amp; escalation design</li><li>Conversation state &amp; memory</li>
+        </ul>
+      </div>
+      <div class="skill reveal" data-reveal>
+        <p class="skill__idx">02 //</p>
+        <h3 class="skill__title">Retrieval &amp; Knowledge</h3>
+        <ul>
+          <li>Retrieval augmented generation</li><li>Vector embeddings</li><li>Supabase pgvector</li>
+          <li>Semantic search</li><li>Document chunking pipelines</li><li>Knowledge ingestion workflows</li>
+        </ul>
+      </div>
+      <div class="skill reveal" data-reveal>
+        <p class="skill__idx">03 //</p>
+        <h3 class="skill__title">Automation &amp; Integration</h3>
+        <ul>
+          <li>n8n</li><li>Webhooks &amp; event triggers</li><li>REST API integration</li>
+          <li>Google Workspace APIs</li><li>Meta Graph API</li><li>Idempotency &amp; deduplication</li>
+          <li>Error handling &amp; retries</li>
+        </ul>
+      </div>
+      <div class="skill reveal" data-reveal>
+        <p class="skill__idx">04 //</p>
+        <h3 class="skill__title">Data &amp; Analytics</h3>
+        <ul>
+          <li>Python (Pandas)</li><li>SQL &amp; PostgreSQL</li><li>ETL &amp; data cleaning</li>
+          <li>Deduplication &amp; validation</li><li>Tableau</li><li>Advanced Excel &amp; Google Sheets</li>
+          <li>Dashboard development</li>
+        </ul>
+      </div>
+      <div class="skill reveal" data-reveal>
+        <p class="skill__idx">05 //</p>
+        <h3 class="skill__title">Engineering &amp; Delivery</h3>
+        <ul>
+          <li>JavaScript &amp; Node.js</li><li>Git &amp; GitHub</li><li>Automated test suites</li>
+          <li>Technical documentation</li><li>Statistical analysis</li><li>Project management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 EDUCATION ============ -->
+<section class="section" id="education">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>05 / QUALIFICATIONS</p>
+    <h2 class="sec-title reveal" data-reveal>Education</h2>
+    <p class="sec-lede reveal" data-reveal>
+      Where the engineering and analytical foundations came from.
+    </p>
+
+    <div class="edu">
+      <article class="edu__card reveal" data-reveal>
+        <p class="edu__when">Coursework</p>
+        <h3 class="edu__title">B.S. Civil Engineering</h3>
+        <p class="edu__org">University of Perpetual Help System DALTA</p>
+        <p class="edu__note">
+          Completed coursework toward the degree. Engineering mathematics, structural
+          analysis and systems thinking, which is where the habit of proving a result rather
+          than trusting it started.
+        </p>
+      </article>
+
+      <article class="edu__card reveal" data-reveal>
+        <p class="edu__when">2018 - 2020</p>
+        <h3 class="edu__title">Senior High School, STEM</h3>
+        <p class="edu__org">Citi Global College</p>
+        <p class="edu__note">
+          Science, Technology, Engineering and Mathematics strand. Graduated.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 FIELD NOTES ============ -->
+<section class="section section--alt" id="notes">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>06 / FIELD NOTES</p>
+    <h2 class="sec-title reveal" data-reveal>From The Build Log</h2>
+    <p class="sec-lede reveal" data-reveal>
+      Things that broke, what the cause turned out to be, and what I changed. Notes from
+      building and running the front desk in production.
+    </p>
+
+    <div class="notes">
+      <article class="note reveal" data-reveal>
+        <div class="note__meta">
+          <span class="note__date">Jul 2026</span>
+          <span class="note__cat">Reliability</span>
+        </div>
+        <h3 class="note__title">The AI agent that hung forever, and the one line that caused it</h3>
+        <p>
+          An agent would stop mid conversation and never return. No error, no timeout, no
+          failed execution to look at. The cause was a node reference inside a Code node
+          running under an agent tool: that combination deadlocks the task runner rather than
+          failing. The fix was to stop reaching backwards for data entirely and pass it
+          forward explicitly instead. A hang is worse than a crash, because nothing tells you
+          it happened.
+        </p>
+      </article>
+
+      <article class="note reveal" data-reveal>
+        <div class="note__meta">
+          <span class="note__date">Aug 2026</span>
+          <span class="note__cat">Cost</span>
+        </div>
+        <h3 class="note__title">What an AI receptionist actually costs per conversation</h3>
+        <p>
+          I pulled 62 real executions out of the database and measured instead of guessing.
+          It came to roughly $0.0082 per message and about $0.04 per conversation, which puts
+          break even against a part time human somewhere near 151 conversations a month. The
+          surprise was where the waste was: a small number of redundant tool calls accounted
+          for a disproportionate slice of the tokens. Worth measuring before optimizing.
+        </p>
+      </article>
+
+      <article class="note reveal" data-reveal>
+        <div class="note__meta">
+          <span class="note__date">Aug 2026</span>
+          <span class="note__cat">Retrieval</span>
+        </div>
+        <h3 class="note__title">Teaching a bot Taglish without breaking retrieval</h3>
+        <p>
+          Filipino patients switch between English and Tagalog mid sentence, so the bot has to
+          mirror them. The problem is that a Taglish question generates a Taglish search query,
+          and the knowledge base is in English, so retrieval quietly misses. The fix separates
+          the two: reply in whatever language the patient used, but always search in English.
+          What the user sees and what the system searches do not have to be the same string.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 ACCREDITATIONS ============ -->
+<section class="section" id="certs">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>07 / ACCREDITATIONS</p>
+    <h2 class="sec-title reveal" data-reveal>Verified Competence</h2>
+
+    <article class="cert reveal" data-reveal>
+      <div class="cert__main">
+        <p class="cert__issuer">Google <span class="sep">/</span> Coursera</p>
+        <h3 class="cert__title">Google Data Analytics Professional Certificate</h3>
+        <p class="cert__note">
+          Eight course specialization covering data cleaning, SQL, R, spreadsheets,
+          visualization and the full analysis process from question to presentation.
+        </p>
+      </div>
+      <a class="cert__verify" href="https://www.coursera.org/account/accomplishments/specialization/4G6P4F0U3UNL" target="_blank" rel="noopener noreferrer">
+        Verify <span aria-hidden="true">&rarr;</span>
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 08 CONTACT ============ -->
+<section class="section section--alt" id="contact">
+  <div class="wrap">
+    <p class="sec-label reveal" data-reveal>08 / CONTACT</p>
+    <h2 class="sec-title sec-title--xl reveal" data-reveal>Let's Connect</h2>
+    <p class="sec-lede reveal" data-reveal>
+      Open to full-time roles, contract work and automation builds. If you are hiring,
+      building something, or your front desk is drowning in messages, get in touch.
+    </p>
+
+    <div class="contact">
+      <div class="contact__info reveal" data-reveal>
+        <div class="contact__row">
+          <span class="k">EMAIL:</span>
+          <a href="mailto:aljohncompendio@gmail.com">aljohncompendio@gmail.com</a>
+        </div>
+        <div class="contact__row">
+          <span class="k">LOCATION:</span>
+          <span class="v">Taguig, Metro Manila, Philippines</span>
+        </div>
+        <div class="contact__row">
+          <span class="k">AVAILABILITY:</span>
+          <span class="v v--ok">Immediate, remote or hybrid</span>
+        </div>
+        <div class="contact__row contact__row--socials">
+          <span class="k">SOCIALS:</span>
+          <span class="socials">
+            <a href="https://www.linkedin.com/in/al-john-compendio-60321537b/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+            <a href="https://github.com/a3s5jj" target="_blank" rel="noopener noreferrer">GITHUB</a>
+            <a href="https://public.tableau.com/app/profile/al.john.compendio/viz/BritishAirwaysReviews_17590476094870/Dashboard1" target="_blank" rel="noopener noreferrer">TABLEAU</a>
+          </span>
+        </div>
+      </div>
+
+      <form class="contact__form reveal" data-reveal id="contactForm"
+            name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Do not fill this in: <input name="company" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="field">
+          <label for="cName">NAME</label>
+          <input id="cName" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="cEmail">EMAIL</label>
+          <input id="cEmail" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="cMsg">MESSAGE</label>
+          <textarea id="cMsg" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block">Send Message <span aria-hidden="true">&rarr;</span></button>
+        <p class="form-note" id="formNote">
+          Prefer email? <a href="mailto:aljohncompendio@gmail.com">aljohncompendio@gmail.com</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__copy">&copy; <span id="year">2026</span> AL JOHN COMPENDIO. ALL RIGHTS RESERVED.</p>
+    <p class="footer__tag">AI AGENTS <span class="sep">//</span> WORKFLOW AUTOMATION <span class="sep">//</span> DATA SYSTEMS</p>
+    <a href="#hero" class="footer__top">RETURN TO APEX <span aria-hidden="true">&uarr;</span></a>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
