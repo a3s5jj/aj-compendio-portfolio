@@ -1,5 +1,4 @@
-# Replace REPLACE-ME.netlify.app with the real domain before deploying.
 User-agent: *
 Allow: /
 
-Sitemap: https://REPLACE-ME.netlify.app/sitemap.xml
+Sitemap: https://ajcompendio-portfolio.netlify.app/sitemap.xml

@@ -133,14 +133,25 @@ npx playwright screenshot --viewport-size=1200,630 assets/og-source.html assets/
 
 ## Deploying to Netlify
 
-### Do this first: set the real domain
+### The live site
 
-Four URLs are hard-coded with the placeholder `REPLACE-ME.netlify.app`. Find and replace it
-with your actual domain in these three files:
+Deployed at **https://ajcompendio-portfolio.netlify.app/**, auto-deploying from the `main`
+branch of `a3s5jj/aj-compendio-portfolio`. Push to `main` and Netlify rebuilds on its own.
+
+That domain is hard-coded in four absolute URLs. If the site ever moves, change all three
+files together or the share preview and canonical URL will point at the old address:
 
 - `index.html` (canonical, `og:url`, `og:image`, and the JSON-LD block)
 - `robots.txt`
 - `sitemap.xml`
+
+Two Netlify settings are **not** in this repo and have to be set in the dashboard:
+
+- **Make public.** New Netlify sites are private by default and answer every request with a
+  401 login redirect until you click *Make public* on the project overview.
+- **Enable form detection.** Off by default. The contact form is inert without it, and it
+  only takes effect on the *next* deploy after enabling, not retroactively. The deploy log
+  says `Skipping form detection` when it is off.
 
 **`og:image` has to be an absolute URL.** LinkedIn does not resolve relative paths, so a
 relative one means your link previews render with no image at all. If you skip this step the
