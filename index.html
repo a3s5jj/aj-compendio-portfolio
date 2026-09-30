@@ -219,8 +219,9 @@
     <p class="sec-label reveal" data-reveal>02 / SELECTED WORK</p>
     <h2 class="sec-title reveal" data-reveal>AI &amp; Automation Projects</h2>
     <p class="sec-lede reveal" data-reveal>
-      Four systems that run without a human in the loop. Two are published engineering
-      write-ups, two are runnable code. Every number below comes from a test run I can point at.
+      Five systems. Four run without a human in the loop; one keeps a person approving every
+      email by design. Two are published engineering write-ups, three are runnable code. Every
+      number below comes from a test run I can point at.
     </p>
 
     <div class="projects" id="projects">
@@ -497,6 +498,77 @@
               <ul class="chips">
                 <li>n8n</li><li>Gmail API</li><li>Google Drive API</li><li>Google Sheets API</li>
                 <li>Telegram Bot API</li><li>Gemini</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 05 -->
+      <article class="project reveal" data-reveal>
+        <h3 class="project__heading">
+        <button class="project__head" aria-expanded="false">
+          <span class="project__idx">PROJECT // 05</span>
+          <span class="project__titles">
+            <span class="project__title">Inquiry to Quote</span>
+            <span class="project__sub">Gmail inquiries to staff-approved quotes, follow-ups and handoffs</span>
+          </span>
+          <span class="project__toggle" aria-hidden="true"></span>
+        </button>
+        </h3>
+
+        <div class="project__body">
+          <div class="project__cols">
+            <div class="project__story">
+              <h4 class="blk">THE STORY</h4>
+              <p>
+                Service businesses lose jobs between an inquiry arriving and a price going
+                out. Details come scattered across emails, the quote is typed by hand, and a
+                customer who goes quiet is simply forgotten. I built this for a fictional
+                office cleaning business, using synthetic data.
+              </p>
+              <h4 class="blk">THE CHALLENGE</h4>
+              <p>
+                Letting AI read messy emails without letting it set a price, promise a date,
+                or send anything. A customer who writes "start next Monday" needs a real
+                date, and models are unreliable at calendar arithmetic.
+              </p>
+              <h4 class="blk">THE SOLUTION</h4>
+              <p>
+                Claude copies what the customer stated, with the supporting text. Postgres
+                rules price the job from a versioned rate card, code turns "next Monday" into
+                a date and repeats the words back, and staff approve every exact email. Quiet
+                quotes get approved follow-ups on day 2 and day 5, and a confirmed acceptance
+                creates one operations brief.
+              </p>
+              <a class="repo-link is-pending" href="https://github.com/a3s5jj/inquiry-to-quote-automation" data-repo>
+                <span aria-hidden="true">&#9679;</span> View the repository
+              </a>
+            </div>
+
+            <div class="project__side">
+              <h4 class="blk">SYSTEM METRICS &amp; TELEMETRY</h4>
+              <div class="metrics">
+                <div class="metric"><span class="metric__v" data-count="71" data-suffix="/71">0</span><span class="metric__k">Automated tests passed</span></div>
+                <div class="metric"><span class="metric__v" data-count="26" data-suffix="">0</span><span class="metric__k">Verified n8n runs</span></div>
+                <div class="metric"><span class="metric__v" data-count="8" data-suffix="/8">0</span><span class="metric__k">Live scenarios passed</span></div>
+              </div>
+
+              <h4 class="blk">PIPELINE ARCHITECTURE</h4>
+              <ol class="pipe">
+                <li>Labeled Gmail inquiry and sender checks</li>
+                <li>Claude copies stated details with evidence</li>
+                <li>Code validates evidence and reads start dates</li>
+                <li>Versioned rate card prices the job</li>
+                <li>Staff approve the exact email</li>
+                <li>Approved reply, then day 2 and day 5 follow-ups</li>
+                <li>Staff-confirmed acceptance to operations brief</li>
+              </ol>
+
+              <h4 class="blk">CORE TECH STACK</h4>
+              <ul class="chips">
+                <li>n8n</li><li>Claude API</li><li>Gmail API</li><li>Supabase Postgres</li>
+                <li>PL/pgSQL</li><li>JavaScript</li><li>Webhooks</li>
               </ul>
             </div>
           </div>
