@@ -101,12 +101,14 @@ Three things to know before editing surfaces:
 
 ## Swapping the photo and the resume
 
-To replace the headshot, drop a new `assets/portrait.jpg` in. The script detects it,
-swaps out the placeholder and switches the frame to photo mode on its own. Portrait or
-square both work, the frame is 3:4 and crops from the centre.
+The approved static avatar cutouts live in `assets/avatar/`:
+`hello.png` in the hero, `thumbs-up.png` beside selected work, and `hand-raise.png`
+beside the final contact section. AJ approved the masked and smoothed versions
+on 4 October 2026. Each is a transparent PNG displayed with its original colours
+and without a frame or vignette; lower images are lazy loaded.
 
-If the file is ever missing, the hero falls back to a marked placeholder slot rather than
-a broken image, and the Download Resume button falls back to "Resume on request".
+Identity references and details live in `assets/avatar/README.md`. The original
+reference JPEGs and `assets/portrait.jpg` are preserved for reuse.
 
 ### Regenerating the resume PDF
 

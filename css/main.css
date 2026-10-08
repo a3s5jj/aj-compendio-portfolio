@@ -177,7 +177,7 @@ img, svg, canvas { display: block; max-width: 100%; }
   transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
 }
 .header.is-stuck {
-  background: rgba(245, 247, 250, .82);
+  background: var(--header-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--border);
@@ -239,6 +239,31 @@ img, svg, canvas { display: block; max-width: 100%; }
 }
 @keyframes blink { 0%, 100% { opacity: 1 } 50% { opacity: .25 } }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  gap: 8px;
+  min-width: 84px;
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-pill);
+  background: var(--glass-flat);
+  box-shadow: var(--shadow-field);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  cursor: pointer;
+  transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.theme-toggle:hover { border-color: var(--accent); background: var(--surface-3); }
+.theme-toggle__icon { width: 18px; height: 18px; flex: 0 0 auto; }
+.theme-toggle__icon--moon { display: none; }
+:root[data-theme="light"] .theme-toggle__icon--sun { display: none; }
+:root[data-theme="light"] .theme-toggle__icon--moon { display: block; }
+
 .burger {
   display: none;
   width: 40px; height: 40px;
@@ -246,6 +271,7 @@ img, svg, canvas { display: block; max-width: 100%; }
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
   cursor: pointer;
+  flex: 0 0 auto;
   padding: 10px 9px;
   flex-direction: column;
   justify-content: space-between;
@@ -412,6 +438,17 @@ img, svg, canvas { display: block; max-width: 100%; }
 /* --- hero portrait panel --- */
 .hero__panel { display: flex; justify-content: center; }
 
+/* Approved transparent stickers keep their original colours in either theme. */
+.avatar-cutout {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  background: transparent;
+}
+.hero__avatar { max-width: 380px; }
+
 .portrait { position: relative; width: 100%; max-width: 380px; aspect-ratio: 3 / 4; }
 .portrait__frame {
   position: absolute;
@@ -422,9 +459,7 @@ img, svg, canvas { display: block; max-width: 100%; }
   justify-items: center;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(245, 247, 250, .8)),
-    repeating-linear-gradient(135deg, transparent 0 12px, rgba(29, 37, 69, .05) 12px 13px);
+  background: var(--portrait-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--shadow-card);
@@ -446,10 +481,7 @@ img, svg, canvas { display: block; max-width: 100%; }
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(115% 80% at 50% 30%, transparent 26%, rgba(245, 247, 250, .58) 100%),
-    linear-gradient(180deg, transparent 55%, rgba(245, 247, 250, .5) 100%),
-    linear-gradient(140deg, rgba(29, 37, 69, .07), rgba(29, 37, 69, .05) 72%);
+  background: var(--portrait-vignette);
   pointer-events: none;
 }
 .portrait__note {
@@ -463,6 +495,18 @@ img, svg, canvas { display: block; max-width: 100%; }
 .portrait__note span { color: var(--text-dim); letter-spacing: .1em; }
 .portrait.has-photo .portrait__note { display: none; }
 .portrait.has-photo .portrait__frame { place-content: stretch; gap: 0; }
+
+/* Keep the official avatar's supplied framing and colours intact. */
+.portrait--avatar { aspect-ratio: 609 / 704; }
+.portrait--avatar .portrait__frame { background: #1C1C1E; }
+.portrait--avatar .portrait__note,
+.portrait--avatar .portrait__note span { color: #B8C3D9; }
+.portrait--avatar .portrait__frame img {
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+}
+.portrait--avatar.has-photo .portrait__frame::after { content: none; }
 
 /* Crop marks. They sit just outside the frame, so each one's outer corner
    carries the frame's radius and they read as arc segments rather than as
@@ -489,6 +533,19 @@ img, svg, canvas { display: block; max-width: 100%; }
 .sec-title { font-size: var(--fs-h2); font-weight: 700; margin-bottom: 18px; }
 .sec-title--xl { font-size: clamp(2.2rem, 7vw, 4.5rem); text-transform: uppercase; letter-spacing: -.04em; }
 .sec-lede { max-width: 62ch; margin-bottom: 56px; }
+
+.section-intro {
+  --intro-avatar-size: 180px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--intro-avatar-size);
+  gap: clamp(24px, 4vw, 40px);
+  align-items: center;
+  margin-bottom: 56px;
+}
+.section-intro__copy { min-width: 0; }
+.section-intro .sec-lede { margin-bottom: 0; }
+.section-intro__avatar { max-width: var(--intro-avatar-size); justify-self: end; }
+.section-intro--contact { --intro-avatar-size: 210px; }
 
 .blk {
   font-family: var(--font-mono);
@@ -525,7 +582,7 @@ img, svg, canvas { display: block; max-width: 100%; }
   border-left: 2px solid var(--accent);
   border-radius: var(--radius-card);
   background:
-    linear-gradient(135deg, rgba(29, 37, 69, .06), transparent),
+    linear-gradient(135deg, var(--quote-tint), transparent),
     var(--glass-flat);
   box-shadow: var(--shadow-card);
   font-family: var(--font-heading);
@@ -1020,9 +1077,22 @@ img, svg, canvas { display: block; max-width: 100%; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-width: 1400px) {
+  .header { gap: 16px; }
+  .header__clock { display: none; }
+}
+
+@media (max-width: 1280px) {
+  .theme-toggle { min-width: 42px; width: 42px; padding: 10px; }
+  .theme-toggle__label { display: none; }
+  .nav { gap: 2px; }
+  .nav__link { padding-inline: 10px; }
+}
+
 @media (max-width: 1080px) {
   .hero__inner { grid-template-columns: minmax(0, 1fr); }
   .hero__panel { order: -1; justify-content: flex-start; }
+  .hero__avatar { max-width: 250px; }
   .portrait { max-width: 250px; }
   .about { grid-template-columns: minmax(0, 1fr); }
   .project__cols { grid-template-columns: minmax(0, 1fr); }
@@ -1034,7 +1104,7 @@ img, svg, canvas { display: block; max-width: 100%; }
   .contact { grid-template-columns: minmax(0, 1fr); }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
   .header__clock { display: none; }
   .burger { display: flex; }
 
@@ -1045,7 +1115,7 @@ img, svg, canvas { display: block; max-width: 100%; }
     align-items: stretch;
     gap: 0;
     padding: 12px var(--gutter) 26px;
-    background: rgba(245, 247, 250, .97);
+    background: var(--drawer-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
@@ -1058,15 +1128,26 @@ img, svg, canvas { display: block; max-width: 100%; }
   .nav__link { padding: 14px 0; border-bottom: 1px solid var(--border); font-size: .95rem; }
   .nav__link::after { left: 0; right: auto; width: 22px; bottom: 8px; }
 
+}
+
+@media (max-width: 860px) {
   .cert { grid-template-columns: minmax(0, 1fr); }
   .cert__verify { justify-self: start; }
 }
 
+@media (max-width: 600px) {
+  .section-intro { --intro-avatar-size: 132px; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .section-intro--contact { --intro-avatar-size: 160px; }
+}
+
 @media (max-width: 560px) {
+  .header { gap: 10px; }
+  .brand { font-size: .82rem; letter-spacing: .07em; }
   /* tighter tracking so the eyebrow stays on one line instead of
      wrapping around the rule that precedes it */
   .hero__eyebrow { letter-spacing: .14em; font-size: 10px; gap: 8px; }
   .portrait { max-width: 190px; }
+  .hero__avatar { max-width: 190px; }
   .portrait__note { letter-spacing: .12em; font-size: 10px; }
 
   .project__head { grid-template-columns: minmax(0, 1fr) 34px; gap: 14px; }

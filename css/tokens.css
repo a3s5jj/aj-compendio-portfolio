@@ -1,45 +1,51 @@
 /* ============================================================
    TOKENS
-   Deep Navy #1D2545 and Slate Navy #2E3969
-   on a cool off-white ground.
+   Dark-first charcoal/navy with a saved light alternative.
    ============================================================ */
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
   /* --- surfaces --- */
-  --bg-primary:    #F5F7FA;
-  --bg-secondary:  #FFFFFF;
-  --surface:       #FFFFFF;
-  --surface-2:     #FFFFFF;
-  --surface-3:     #EEF2F7;   /* the one step down from white, for hover fills */
+  --bg-primary:    #101522;
+  --bg-secondary:  #151C2C;
+  --surface:       #1A2335;
+  --surface-2:     #202B40;
+  --surface-3:     #26334B;
 
   /* --- lines --- */
-  --border:        rgba(18, 22, 28, .10);
-  --border-hover:  rgba(18, 22, 28, .24);
-  --grid-line:     rgba(18, 22, 28, .45);   /* hero grid, painted at opacity .18 */
+  --border:        rgba(207, 218, 244, .13);
+  --border-hover:  rgba(207, 218, 244, .30);
+  --grid-line:     rgba(166, 188, 255, .26);   /* hero grid, painted at opacity .18 */
 
   /* --- text --- */
-  --text-primary:  #12161C;
-  --text-secondary:#55606F;
-  --text-dim:      #68707E;   /* micro labels; 4.65:1, the AA floor for 11px */
+  --text-primary:  #F3F5FB;
+  --text-secondary:#B8C3D9;
+  --text-dim:      #98A8C4;
 
-  /* --- accent ---
-     On the old near-black ground the small-text accent had to be LIGHTER than
-     --accent. On this light ground that relationship inverts: --accent is dark
-     enough for any size (14:1 on --bg-primary), and --accent-soft is the
-     hover/active step, which now goes lighter rather than darker. */
-  --accent:        #1D2545;
-  --accent-text:   #1D2545;
-  --accent-soft:   #2E3969;
-  --accent-glow:   rgba(29, 37, 69, .09);   /* chip + badge tint */
-  --accent-line:   rgba(29, 37, 69, .32);
-  --focus-ring:    rgba(29, 37, 69, .22);   /* --accent-glow is too faint at 3px */
-  --on-accent:     #F6F9FC;                 /* text sitting on an --accent fill */
+  /* --- accent --- */
+  --accent:        #A6BCFF;
+  --accent-text:   #A6BCFF;
+  --accent-soft:   #C1D0FF;
+  --accent-glow:   rgba(166, 188, 255, .10);
+  --accent-line:   rgba(166, 188, 255, .34);
+  --focus-ring:    rgba(166, 188, 255, .26);
+  --on-accent:     #101522;
 
-  --success:       #0F7A5E;   /* 4.93:1; #12916F was 3.7:1 and failed AA */
-  --success-tint:  rgba(18, 145, 111, .12);   /* tint keeps the brighter hue */
-  --danger:        #B42318;
+  --success:       #75D9B0;
+  --success-tint:  rgba(117, 217, 176, .14);
+  --danger:        #FFADA5;
+
+  /* Theme-aware paints used outside the basic surfaces. */
+  --header-bg:     rgba(16, 21, 34, .88);
+  --drawer-bg:     rgba(16, 21, 34, .98);
+  --quote-tint:    rgba(166, 188, 255, .08);
+  --portrait-bg:   linear-gradient(180deg, rgba(32, 43, 64, .65), rgba(16, 21, 34, .85)),
+                   repeating-linear-gradient(135deg, transparent 0 12px, rgba(166, 188, 255, .05) 12px 13px);
+  --portrait-vignette: radial-gradient(115% 80% at 50% 30%, transparent 26%, rgba(16, 21, 34, .58) 100%),
+                       linear-gradient(180deg, transparent 55%, rgba(16, 21, 34, .5) 100%),
+                       linear-gradient(140deg, rgba(166, 188, 255, .07), rgba(166, 188, 255, .05) 72%);
+  --canvas-rgb:    166, 188, 255;
 
   /* --- type --- */
   --font-sans:    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -75,16 +81,52 @@
   --radius-card:   20px;
   --radius-pill:   999px;
 
-  /* --- glass ---
-     A translucent gradient, not a flat fill, so the cards that already had a
-     top-to-bottom falloff keep it. --glass-flat is for the ones that were flat.
-     On the white .section--alt bands a translucent white card composites to
-     white, so --border and --shadow-card are what actually define those cards;
-     the white edge-light lives in the shadow's inset highlight. */
-  --glass-bg:      linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .52));
-  --glass-flat:    rgba(255, 255, 255, .60);
+  /* --- glass --- */
+  --glass-bg:      linear-gradient(180deg, rgba(32, 43, 64, .82), rgba(26, 35, 53, .72));
+  --glass-flat:    rgba(26, 35, 53, .78);
   --glass-blur:    blur(16px);
 
+  --shadow-card:   inset 0 1px 0 rgba(207, 218, 244, .06),
+                   0 1px 2px rgba(0, 0, 0, .12),
+                   0 8px 24px -12px rgba(0, 0, 0, .28),
+                   0 24px 48px -32px rgba(0, 0, 0, .42);
+  --shadow-field:  0 1px 2px rgba(0, 0, 0, .16);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg-primary:    #F5F7FA;
+  --bg-secondary:  #FFFFFF;
+  --surface:       #FFFFFF;
+  --surface-2:     #FFFFFF;
+  --surface-3:     #EEF2F7;
+  --border:        rgba(18, 22, 28, .10);
+  --border-hover:  rgba(18, 22, 28, .24);
+  --grid-line:     rgba(18, 22, 28, .45);
+  --text-primary:  #12161C;
+  --text-secondary:#55606F;
+  --text-dim:      #656E7C;
+  --accent:        #1D2545;
+  --accent-text:   #1D2545;
+  --accent-soft:   #2E3969;
+  --accent-glow:   rgba(29, 37, 69, .09);
+  --accent-line:   rgba(29, 37, 69, .32);
+  --focus-ring:    rgba(29, 37, 69, .22);
+  --on-accent:     #F6F9FC;
+  --success:       #0F7A5E;
+  --success-tint:  rgba(18, 145, 111, .12);
+  --danger:        #B42318;
+  --header-bg:     rgba(245, 247, 250, .82);
+  --drawer-bg:     rgba(245, 247, 250, .97);
+  --quote-tint:    rgba(29, 37, 69, .06);
+  --portrait-bg:   linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(245, 247, 250, .8)),
+                   repeating-linear-gradient(135deg, transparent 0 12px, rgba(29, 37, 69, .05) 12px 13px);
+  --portrait-vignette: radial-gradient(115% 80% at 50% 30%, transparent 26%, rgba(245, 247, 250, .58) 100%),
+                       linear-gradient(180deg, transparent 55%, rgba(245, 247, 250, .5) 100%),
+                       linear-gradient(140deg, rgba(29, 37, 69, .07), rgba(29, 37, 69, .05) 72%);
+  --canvas-rgb:    29, 37, 69;
+  --glass-bg:      linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .52));
+  --glass-flat:    rgba(255, 255, 255, .60);
   --shadow-card:   inset 0 1px 0 rgba(255, 255, 255, .7),
                    0 1px 2px rgba(18, 22, 28, .04),
                    0 8px 24px -12px rgba(18, 22, 28, .10),
@@ -92,6 +134,6 @@
   --shadow-field:  0 1px 2px rgba(18, 22, 28, .04);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
   :root { --header-h: 66px; }
 }

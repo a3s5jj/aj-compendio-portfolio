@@ -150,6 +150,15 @@
     var w = 0, h = 0;
     var running = true;
     var frame = null;
+    var canvasRGB = '166,188,255';
+
+    // Cache theme colours when they change; draw() never reads layout/styles.
+    function syncTheme() {
+      var value = getComputedStyle(document.documentElement).getPropertyValue('--canvas-rgb').trim();
+      if (/^\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}$/.test(value)) canvasRGB = value;
+    }
+    syncTheme();
+    window.addEventListener('themechange', syncTheme);
 
     function size() {
       var r = cv.getBoundingClientRect();
@@ -188,9 +197,7 @@
           var dx = n.x - m.x, dy = n.y - m.y;
           var d2 = dx * dx + dy * dy;
           if (d2 < 21000) {
-            // both canvas colours mirror --accent (#1D2545). Kept as literals:
-            // reading the custom property here would cost a getComputedStyle per frame.
-            ctx.strokeStyle = 'rgba(29,37,69,' + (.16 * (1 - d2 / 21000)).toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(' + canvasRGB + ',' + (.16 * (1 - d2 / 21000)).toFixed(3) + ')';
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(n.x, n.y);
@@ -199,7 +206,7 @@
           }
         }
 
-        ctx.fillStyle = 'rgba(29,37,69,.55)';
+        ctx.fillStyle = 'rgba(' + canvasRGB + ',.55)';
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
@@ -437,8 +444,8 @@
 
   /* ===========================================================
      OPTIONAL ASSETS
-     The portrait and the CV are dropped in later. Until they
-     exist the page must not show a broken image or a dead link.
+     Insert the selected portrait only after it has loaded.
+     A missing asset leaves the labelled placeholder intact.
      =========================================================== */
   function optionalAssets() {
     // portrait
@@ -446,13 +453,15 @@
     if (frame) {
       var img = new Image();
       img.onload = function () {
-        img.alt = 'Al John Compendio';
+        img.alt = frame.parentNode.classList.contains('portrait--avatar')
+          ? 'Al John Compendio, official Memoji avatar'
+          : 'Al John Compendio';
         img.setAttribute('width', img.naturalWidth);
         img.setAttribute('height', img.naturalHeight);
         frame.insertBefore(img, frame.firstChild);
         frame.parentNode.classList.add('has-photo');
       };
-      img.src = 'assets/portrait.jpg';
+      img.src = frame.getAttribute('data-src') || 'assets/portrait.jpg';
     }
 
     // The resume PDF used to be HEAD-probed here to detect a missing file.

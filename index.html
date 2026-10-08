@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AJ Compendio | AI Automation Engineer</title>
 <meta name="description" content="Al John Compendio builds AI agents that answer, decide and write to real systems. n8n, RAG, and automation pipelines with deterministic guardrails.">
 <meta name="author" content="Al John Compendio">
-<meta name="theme-color" content="#F5F7FA">
+<meta name="theme-color" content="#101522">
+<script src="js/theme.js?v=20261009"></script>
 
 <!-- =========================================================================
      The four absolute URLs below point at ajcompendio-portfolio.netlify.app.
@@ -44,7 +45,7 @@
   "jobTitle": "Freelance Automation Engineer",
   "description": "Builds AI agents that read approved knowledge, decide what a message needs, and write the result into real calendars, sheets and databases.",
   "url": "https://ajcompendio-portfolio.netlify.app/",
-  "image": "https://ajcompendio-portfolio.netlify.app/assets/portrait.jpg",
+  "image": "https://ajcompendio-portfolio.netlify.app/assets/avatar/hello.png",
   "email": "mailto:aljohncompendio@gmail.com",
   "address": {
     "@type": "PostalAddress",
@@ -69,8 +70,8 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/tokens.css?v=20261009">
+<link rel="stylesheet" href="css/main.css?v=20261009">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -109,6 +110,17 @@
     <span class="dot" aria-hidden="true"></span>
     <span id="clock">MNL 00:00:00</span>
   </div>
+
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"></path>
+    </svg>
+    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20.5 14.1A8.5 8.5 0 0 1 9.9 3.5a8.5 8.5 0 1 0 10.6 10.6Z"></path>
+    </svg>
+    <span class="theme-toggle__label">Dark</span>
+  </button>
 
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
     <span></span><span></span><span></span>
@@ -155,15 +167,9 @@
     </div>
 
     <div class="hero__panel reveal" data-reveal>
-      <div class="portrait" id="portrait">
-        <div class="portrait__frame">
-          <p class="portrait__note">PORTRAIT SLOT<br><span>drop assets/portrait.jpg</span></p>
-        </div>
-        <span class="corner tl" aria-hidden="true"></span>
-        <span class="corner tr" aria-hidden="true"></span>
-        <span class="corner bl" aria-hidden="true"></span>
-        <span class="corner br" aria-hidden="true"></span>
-      </div>
+      <img class="avatar-cutout hero__avatar" id="portrait" src="assets/avatar/hello.png"
+           alt="Al John Compendio's avatar smiling and waving hello"
+           width="1254" height="1254" fetchpriority="high" decoding="async">
     </div>
   </div>
 
@@ -216,13 +222,20 @@
 <!-- ============ 02 WORK ============ -->
 <section class="section section--alt" id="work">
   <div class="wrap">
-    <p class="sec-label reveal" data-reveal>02 / SELECTED WORK</p>
-    <h2 class="sec-title reveal" data-reveal>AI &amp; Automation Projects</h2>
-    <p class="sec-lede reveal" data-reveal>
-      Five systems. Four run without a human in the loop; one keeps a person approving every
-      email by design. Two are published engineering write-ups, three are runnable code. Every
-      number below comes from a test run I can point at.
-    </p>
+    <div class="section-intro">
+      <div class="section-intro__copy">
+        <p class="sec-label reveal" data-reveal>02 / SELECTED WORK</p>
+        <h2 class="sec-title reveal" data-reveal>AI &amp; Automation Projects</h2>
+        <p class="sec-lede reveal" data-reveal>
+          Five systems. Four run without a human in the loop; one keeps a person approving every
+          email by design. Two are published engineering write-ups, three are runnable code. Every
+          number below comes from a test run I can point at.
+        </p>
+      </div>
+      <img class="avatar-cutout section-intro__avatar reveal" data-reveal
+           src="assets/avatar/thumbs-up.png" alt="" width="1254" height="1254"
+           loading="lazy" decoding="async">
+    </div>
 
     <div class="projects" id="projects">
 
@@ -803,12 +816,19 @@
 <!-- ============ 08 CONTACT ============ -->
 <section class="section section--alt" id="contact">
   <div class="wrap">
-    <p class="sec-label reveal" data-reveal>08 / CONTACT</p>
-    <h2 class="sec-title sec-title--xl reveal" data-reveal>Let's Connect</h2>
-    <p class="sec-lede reveal" data-reveal>
-      Open to full-time roles, contract work and automation builds. If you are hiring,
-      building something, or your front desk is drowning in messages, get in touch.
-    </p>
+    <div class="section-intro section-intro--contact">
+      <div class="section-intro__copy">
+        <p class="sec-label reveal" data-reveal>08 / CONTACT</p>
+        <h2 class="sec-title sec-title--xl reveal" data-reveal>Let's Connect</h2>
+        <p class="sec-lede reveal" data-reveal>
+          Open to full-time roles, contract work and automation builds. If you are hiring,
+          building something, or your front desk is drowning in messages, get in touch.
+        </p>
+      </div>
+      <img class="avatar-cutout section-intro__avatar reveal" data-reveal
+           src="assets/avatar/hand-raise.png" alt="" width="1254" height="1254"
+           loading="lazy" decoding="async">
+    </div>
 
     <div class="contact">
       <div class="contact__info reveal" data-reveal>
@@ -871,6 +891,6 @@
   </div>
 </footer>
 
-<script src="js/main.js" defer></script>
+<script src="js/main.js?v=20261009" defer></script>
 </body>
 </html>
