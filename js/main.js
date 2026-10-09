@@ -16,7 +16,7 @@
   var ROLES = [
     'AI AUTOMATION ENGINEER',
     'N8N SYSTEMS BUILDER',
-    'RAG + AI AGENTS',
+    'BUSINESS PROCESS AUTOMATION',
     'API & DATA INTEGRATION'
   ];
 
@@ -26,24 +26,13 @@
 
   /* ===========================================================
      PRELOADER
-     Progress is derived from ELAPSED TIME, not from a tick count.
-     Background tabs clamp setInterval to roughly 1s, so a counter
-     that added a step per tick would crawl and the loader would
-     still be sitting there when you switched back. Reading the
-     clock instead means it lands where it should either way.
      =========================================================== */
   function preloader() {
-    var el   = $('#preloader');
-    var fill = $('#preloaderFill');
-    var pct  = $('#preloaderPct');
+    var el = $('#preloader');
     if (!el) return;
 
-    var DURATION = 700;      // time to reach the pre-load ceiling
-    var CEILING  = 1400;     // never wait longer than this for load
-    var started  = Date.now();
-    var loaded   = false;
-    var done     = false;
-    var timer;
+    var started = Date.now();
+    var done = false;
 
     // The preloader is what gates Largest Contentful Paint: measured at
     // 3.16s with it, 72ms without. Playing it once per session keeps the
@@ -59,46 +48,20 @@
     }
     try { sessionStorage.setItem(SEEN, '1'); } catch (err) { /* private mode */ }
 
-    window.addEventListener('load', function () { loaded = true; paint(); });
-    setTimeout(function () { loaded = true; paint(); }, CEILING);
-
     function finish() {
       if (done) return;
       done = true;
-      clearInterval(timer);
       el.classList.add('is-done');
       document.body.classList.remove('is-locked');
       setTimeout(function () { if (el.parentNode) el.remove(); }, 700);
       startHero();
     }
 
-    if (reduced) {
-      fill.style.width = '100%';
-      pct.textContent = '100%';
-      setTimeout(finish, 120);
-      return;
-    }
-
     document.body.classList.add('is-locked');
-
-    function paint() {
-      if (done) return;
-      var elapsed = Date.now() - started;
-      var p = Math.min(elapsed / DURATION, 1);
-      var eased = 1 - Math.pow(1 - p, 2);
-      var value = Math.min(loaded ? 100 : 88, eased * 100);
-
-      fill.style.width = value + '%';
-      pct.textContent = Math.round(value) + '%';
-
-      if (value >= 100) setTimeout(finish, 260);
-    }
-
-    timer = setInterval(paint, 50);
-    document.addEventListener('visibilitychange', function () {
-      if (!document.hidden) paint();
-    });
-    paint();
+    window.addEventListener('load', function () {
+      setTimeout(finish, reduced ? 0 : Math.max(0, 500 - (Date.now() - started)));
+    }, { once: true });
+    setTimeout(finish, 1400); // Reveal even if a third-party asset never loads.
   }
 
   /* ===========================================================

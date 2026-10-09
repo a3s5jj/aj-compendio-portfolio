@@ -179,11 +179,11 @@ so rather than pretending it sent.
 
 These were measured, not assumed. Worth knowing before changing them.
 
-**The intro plays once per session.** The preloader is what gates Largest Contentful Paint.
-Measured on localhost, LCP was 3160ms before and is now a median of 2128ms on a first visit
-and 1164ms on repeat visits, both inside Google's 2500ms "good" threshold. The skip is a
-`sessionStorage` flag (`aj_intro_seen`) in `js/main.js`. Lengthening `DURATION` there puts
-the time straight back onto LCP.
+**The skeleton intro plays once per session.** It mirrors the navigation and hero while
+the page loads, then clears after at least 500ms or at most 1400ms. Shimmer stops for
+visitors who prefer reduced motion. The `sessionStorage` flag (`aj_intro_seen`) in
+`js/main.js` skips the intro on repeat visits. Since the overlay gates Largest Contentful
+Paint, keep its display time short and remeasure LCP before changing the timing.
 
 **Only 5 font faces are loaded**, checked against computed styles rather than guessed: IBM
 Plex Sans 400, JetBrains Mono 400 and 500, Space Grotesk 600 and 700. That is 74.5KB, down
