@@ -117,7 +117,7 @@ public copy of the resume: **no phone number**, and the employer shown as Indepe
 the HTML and re-render:
 
 ```bash
-npx playwright pdf --format=A4 assets/cv-source.html assets/AJ-Compendio-CV.pdf
+npx playwright pdf --paper-format A4 --channel msedge assets/cv-source.html assets/AJ-Compendio-CV.pdf
 ```
 
 It is tuned to fit exactly one A4 page. If you add content, check the page count after

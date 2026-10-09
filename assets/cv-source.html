@@ -28,10 +28,10 @@
 
   a { color: #2E3969; text-decoration: none; }
 
-  header { border-bottom: 2px solid #1D2545; padding-bottom: 6px; margin-bottom: 9px; }
+  header { border-bottom: 2px solid #1D2545; padding-bottom: 5px; margin-bottom: 7px; }
   h1 { font-size: 19pt; letter-spacing: -.02em; color: #1D2545; line-height: 1.05; }
   .role { font-size: 9.8pt; font-weight: 600; color: #2E3969; margin-top: 3px; }
-  .contact { font-size: 8.8pt; color: #55606F; margin-top: 6px; }
+  .contact { font-size: 8.3pt; color: #55606F; margin-top: 5px; }
   .contact span + span::before { content: "  |  "; color: #68707E; }
 
   h2 {
@@ -41,18 +41,19 @@
     color: #1D2545;
     border-bottom: 1px solid rgba(18,22,28,.14);
     padding-bottom: 3px;
-    margin: 7px 0 4px;
+    margin: 5px 0 3px;
   }
 
-  .job { margin-bottom: 6px; }
+  .job { margin-bottom: 5px; }
   .job:last-child { margin-bottom: 0; }
   .job__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .job__title { font-size: 9.4pt; font-weight: 700; color: #1D2545; }
   .job__when { font-size: 8.5pt; color: #55606F; white-space: nowrap; }
   .job__org { font-size: 9pt; font-weight: 600; color: #2E3969; margin-bottom: 3px; }
+  .project-link { font-size: 8pt; font-weight: 500; margin-left: 4px; text-decoration: underline; white-space: nowrap; }
 
   ul { margin: 0; padding-left: 14px; }
-  li { margin-bottom: 1.5px; }
+  li { margin-bottom: 1px; }
   li::marker { color: #2E3969; }
 
   .kv { margin-bottom: 1.5px; }
@@ -60,17 +61,18 @@
 
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
   .muted { color: #55606F; }
-  .tight li { margin-bottom: 1.5px; }
+  .tight li { margin-bottom: 1px; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>Al John Compendio</h1>
-  <p class="role">AI Automation Engineer &nbsp;|&nbsp; Data Analyst</p>
+  <p class="role">Workflow Automation Developer &nbsp;|&nbsp; Data Analyst</p>
   <p class="contact">
     <span>Taguig, Metro Manila, Philippines</span>
     <span><a href="mailto:aljohncompendio@gmail.com">aljohncompendio@gmail.com</a></span>
+    <span><a href="https://ajcompendio-portfolio.netlify.app">ajcompendio-portfolio.netlify.app</a></span>
     <span><a href="https://www.linkedin.com/in/al-john-compendio-60321537b/">linkedin.com/in/al-john-compendio</a></span>
     <span><a href="https://github.com/a3s5jj">github.com/a3s5jj</a></span>
   </p>
@@ -78,67 +80,77 @@
 
 <h2>Professional Summary</h2>
 <p>
-  AI automation engineer and data analyst who builds production workflow systems and turns raw
-  data into decisions. Experienced in n8n workflow automation, AI agents with retrieval-augmented
-  generation (RAG), REST API integration, and Python and SQL data pipelines, alongside dashboard
-  development in Tableau and Excel. Google Data Analytics certified. Recent work includes a
-  multi-channel AI agent that handles booking conversations end to end and a lead generation
-  pipeline that screened 2,297 raw records into 441 qualified accounts.
+  Workflow automation developer and data analyst who builds reliable systems for customer
+  response, business operations, and reporting. Experienced in developing automations for
+  dental, real-estate, and fitness businesses.
+</p>
+<p style="margin-top:3px">
+  My approach is to understand the business process, identify bottlenecks, and build reliable
+  workflows that fit the team's day-to-day operations. I focus on maintainability and measurable
+  improvement, using AI for interpretation and deterministic rules for critical business actions.
+  Now seeking a full-time role where I can take long-term ownership of internal automation systems
+  and continuously improve them with the team.
 </p>
 
 <h2>Professional Experience</h2>
 
 <div class="job">
   <div class="job__head">
-    <span class="job__title">Freelance AI Automation Developer &nbsp;|&nbsp; AI Agent &amp; Data Systems</span>
-    <span class="job__when">June 2026 &ndash; Present</span>
+    <span class="job__title">Freelance Automation Developer &nbsp;|&nbsp; Client Workflow Systems</span>
+    <span class="job__when">February 2026 - Present</span>
   </div>
   <p class="job__org">Independent</p>
   <ul>
-    <li>Built a 65-node n8n AI agent that handles customer conversations across Facebook Messenger, WhatsApp, and website chat and autonomously books, reschedules, and cancels Google Calendar appointments, validated across 105 end-to-end test executions with zero failures at $0.04 per conversation.</li>
-    <li>Implemented retrieval-augmented generation (RAG) on a Supabase PostgreSQL vector database so the agent answers pricing, hours, and service questions from source documents rather than generating them, with an automated ingestion workflow for new content.</li>
-    <li>Engineered a data pipeline in Node.js and Python that scrapes, deduplicates, enriches, and validates business records from Google Maps, the Facebook Ads Library, and a REST API, screening 2,297 raw listings from three sources into 441 verified, contactable leads.</li>
-    <li>Launched a 3-touch cold email sequence with 4 A/B tested copy variants and per-record personalized openers auto-generated from the scraped dataset, reaching 191 prospects with no per-record copy written by hand.</li>
-    <li>Designed deduplication keys and validation gates for the lead master, enforcing a full source-to-disposition audit trail across a 2,297-row screening log and eliminating 59 duplicate records before outreach.</li>
+    <li>Built an autonomous AI front desk for a dental clinic, helping increase weekly patients from an average of 14 to 27, a 93% increase, within two weeks.</li>
+    <li>Built an automated property tracker for a real-estate client that turns prospect requirements into tailored sample computations and presentations, reducing preparation time from approximately 30 minutes to 5 minutes per prospect.</li>
+    <li>Built a membership and attendance tracker for a local gym that centralized member records, streamlined front-desk check-ins and renewals, and enforced access and duplicate-check-in rules.</li>
   </ul>
 </div>
 
 <div class="job">
   <div class="job__head">
     <span class="job__title">Real Estate Agent &nbsp;|&nbsp; Market Analysis &amp; Ads Strategy</span>
-    <span class="job__when">August 2024 &ndash; August 2025</span>
+    <span class="job__when">August 2024 - August 2025</span>
   </div>
   <p class="job__org">PHirst Park Homes International</p>
   <ul>
     <li>Automated daily synchronization of 3,000+ property listings with event-based n8n workflows that updated and removed records across Excel and Google Sheets, replacing 15 hours of manual updating per week.</li>
     <li>Designed and automated Excel-based sample computations, reducing manual calculation errors by 22% and saving 10+ hours of work per week while improving data reliability.</li>
-    <li>Analyzed pre-selling property markets and executed Facebook Ads campaigns with targeted strategies, boosting conversion rates from 3% to 11%.</li>
-    <li>Developed and executed a Facebook Ads campaign, refining audience targeting to generate leads and successfully convert 2 property sales.</li>
+    <li>Improved Facebook Ads conversion from 3% to 11% through audience and campaign analysis, contributing to 2 property sales.</li>
   </ul>
 </div>
 
 <h2>Skills</h2>
-<p class="kv"><b>AI &amp; Automation:</b> n8n, AI agents, retrieval-augmented generation (RAG), prompt engineering, Claude API, workflow orchestration</p>
-<p class="kv"><b>Programming:</b> Python (Pandas), JavaScript, Node.js, SQL</p>
-<p class="kv"><b>Data &amp; Databases:</b> PostgreSQL, Supabase, vector databases, ETL, data cleaning, deduplication</p>
-<p class="kv"><b>Analytics &amp; Visualization:</b> Tableau, Excel (advanced), Google Sheets, dashboard development, statistical analysis</p>
-<p class="kv"><b>APIs &amp; Integration:</b> REST APIs, webhooks, Google Workspace APIs (Calendar, Sheets, Gmail), Meta Graph API</p>
-<p class="kv"><b>Tools:</b> Git, GitHub, web scraping, Playwright</p>
-<p class="kv"><b>Professional:</b> Project management, A/B testing and campaign analysis, requirements gathering, technical documentation, problem solving</p>
+<p class="kv"><b>Automation:</b> n8n, REST APIs, webhooks, retrieval-augmented generation (RAG), Google Workspace APIs</p>
+<p class="kv"><b>Development &amp; Data:</b> Python, JavaScript, Node.js, SQL, PostgreSQL, Supabase</p>
+<p class="kv"><b>Analytics:</b> Excel, Google Sheets, Tableau, ETL, data cleaning, deduplication</p>
 
-<h2>Projects</h2>
+<h2>Selected Independent Projects</h2>
 <div class="job">
-  <p class="job__org" style="margin-bottom:2px">AI Front Desk (n8n + RAG)</p>
+  <p class="job__org" style="margin-bottom:2px">AI Inquiry-to-Quote Automation (n8n + Claude + PostgreSQL)<a class="project-link" href="https://github.com/a3s5jj/inquiry-to-quote-automation">GitHub</a></p>
   <ul class="tight">
-    <li>Multi-channel conversational AI agent built on a 65-node n8n workflow, with custom tools for calendar booking, rescheduling, and cancellation.</li>
-    <li>Document-grounded knowledge base using a Supabase vector store, so answers come from source material instead of model recall.</li>
+    <li>Built a 61-node system that converts email inquiries into rule-priced, staff-approved quotes, follow-ups, and operations briefs; passed 71 deterministic tests, 26 isolated n8n runs, and 8 of 8 live scenarios.</li>
   </ul>
 </div>
+
 <div class="job">
-  <p class="job__org" style="margin-bottom:2px">British Airways Reviews 2016&ndash;2023 (Tableau)</p>
+  <p class="job__org" style="margin-bottom:2px">Open-Source Dental AI Front Desk (n8n + Claude + Supabase + Google Workspace)<a class="project-link" href="https://github.com/a3s5jj/dental-ai-frontdesk-oss">GitHub</a></p>
   <ul class="tight">
-    <li>Interactive dashboard using filters, parameters, and calculated fields, built with clean elements for easy interpretation.</li>
-    <li><a href="https://public.tableau.com/app/profile/al.john.compendio/viz/BritishAirwaysReviews_17590476094870/Dashboard1">public.tableau.com/app/profile/al.john.compendio</a></li>
+    <li>Released an MIT-licensed n8n template based on a real dental-clinic deployment, combining document-grounded patient replies with deterministic booking, rescheduling, and cancellation controls; validated through 58 offline checks.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <p class="job__org" style="margin-bottom:2px">Document Intake Automation (n8n + Gmail + Google Drive + Google Sheets)<a class="project-link" href="https://github.com/a3s5jj/document-intake-automation">GitHub</a></p>
+  <ul class="tight">
+    <li>Built idempotent workflows that organize email attachments and receipt images in Google Drive with a Google Sheets audit trail; the live-tested Gmail workflow processed 7 attachments with zero errors and created no duplicate records or files when replayed.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <p class="job__org" style="margin-bottom:2px">Lead Qualification and Outreach Pipeline (Node.js + Python)<a class="project-link" href="https://github.com/a3s5jj/dental-lead-qualification-case-study">GitHub</a></p>
+  <ul class="tight">
+    <li>Built a self-directed pipeline that scraped, deduplicated, enriched, and validated 2,297 business listings, producing 441 contactable leads, removing 59 duplicates, and supporting personalized outreach to 191 prospects.</li>
   </ul>
 </div>
 
@@ -147,13 +159,13 @@
     <h2>Education</h2>
     <p class="kv"><b>Completed coursework toward B.S. Civil Engineering</b><br>
       <span class="muted">University of Perpetual Help System DALTA</span></p>
-    <p class="kv"><b>Senior High School, STEM</b> &nbsp;<span class="muted">2018&ndash;2020</span><br>
-      <span class="muted">Citi Global College &middot; Graduate</span></p>
+    <p class="kv"><b>Senior High School, STEM</b> &nbsp;<span class="muted">2018-2020</span><br>
+      <span class="muted">Citi Global College - Graduate</span></p>
   </div>
   <div>
     <h2>Certification &amp; Languages</h2>
     <p class="kv"><b>Google Data Analytics Professional Certificate</b><br>
-      <span class="muted">Google / Coursera &middot;
+      <span class="muted">Google / Coursera -
       <a href="https://www.coursera.org/account/accomplishments/specialization/4G6P4F0U3UNL">verify</a></span></p>
     <p class="kv"><b>Languages:</b> <span class="muted">Tagalog (native), English (professional working proficiency)</span></p>
   </div>
