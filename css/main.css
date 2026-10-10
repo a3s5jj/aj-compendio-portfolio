@@ -315,6 +315,11 @@ img, svg, canvas { display: block; max-width: 100%; }
 :root[data-theme="light"] .theme-toggle__icon--sun { display: none; }
 :root[data-theme="light"] .theme-toggle__icon--moon { display: block; }
 
+.animation-toggle[hidden],
+.animation-toggle__play,
+.animation-toggle[aria-pressed="true"] .animation-toggle__pause { display: none; }
+.animation-toggle[aria-pressed="true"] .animation-toggle__play { display: block; }
+
 .burger {
   display: none;
   width: 40px; height: 40px;
@@ -492,7 +497,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 /* --- hero portrait panel --- */
 .hero__panel { display: flex; justify-content: center; }
 
-/* Approved transparent stickers keep their original colours in either theme. */
+/* Transparent character artwork keeps its colours in either theme. */
 .avatar-cutout {
   display: block;
   width: 100%;
@@ -502,6 +507,13 @@ img, svg, canvas { display: block; max-width: 100%; }
   background: transparent;
 }
 .hero__avatar { max-width: 380px; }
+
+.robot-avatar { position: relative; aspect-ratio: 1; }
+.robot-avatar img,
+.robot-avatar canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+.robot-avatar canvas { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.robot-avatar.is-ready canvas { opacity: 1; }
+.robot-avatar.is-ready img { opacity: 0; }
 
 .portrait { position: relative; width: 100%; max-width: 380px; aspect-ratio: 3 / 4; }
 .portrait__frame {

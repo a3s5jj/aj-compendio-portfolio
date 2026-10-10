@@ -7,8 +7,8 @@ Lenis handles smooth vertical scrolling; section animations use the existing scr
 
 ## Run it
 
-Double click `index.html`. That works for everything except the contact form, which needs
-a real host.
+Double click `index.html` for the static page and robot poses. Robot animation needs the
+local HTTP server below; the contact form needs a real host.
 
 For a proper local server:
 
@@ -16,7 +16,8 @@ For a proper local server:
 npx serve@14.2.6 . --listen tcp://127.0.0.1:4173 --no-clipboard
 ```
 
-Use this server for the video preview; its byte-range responses support seeking.
+Use this server for robot animations and the video preview; its byte-range responses
+support video seeking.
 
 ## Layout
 
@@ -28,6 +29,8 @@ sitemap.xml     single URL, needs the real domain
 css/tokens.css  palette, fonts, spacing, motion timings
 css/main.css    layout and every section style
 js/main.js      preloader, nav, clock, reveals, typewriter, canvas, counters, form
+js/robot-avatars.js  visible-avatar playback, pause and reduced-motion handling
+js/robot-scene.js    the approved robot's lighting, framing and named clips
 assets/         favicon, portrait, resume PDF + source, OG image + source
 netlify.toml    security headers and caching
 ```
@@ -103,14 +106,32 @@ Three things to know before editing surfaces:
 
 ## Swapping the photo and the resume
 
-The approved static avatar cutouts live in `assets/avatar/`:
-`hello.png` in the hero, `thumbs-up.png` beside selected work, and `hand-raise.png`
-beside the final contact section. AJ approved the masked and smoothed versions
-on 4 October 2026. Each is a transparent PNG displayed with its original colours
-and without a frame or vignette; lower images are lazy loaded.
+The approved workshop robot replaces the three avatar slots: Greeting in the hero,
+Working beside selected work, and Thinking beside the final contact introduction.
+The loops use the reviewed 7/7/9-second clips, each with activity followed by one
+second neutral. The page preserves the current slot sizes and transparent backgrounds.
 
-Identity references and details live in `assets/avatar/README.md`. The original
-reference JPEGs and `assets/portrait.jpg` are preserved for reuse.
+`assets/robot/` holds the frozen animated GLB and transparent PNG fallback poses.
+The model is 10,459,520 bytes and is downloaded once, then cached for the three
+instances. Lower avatars initialize when they enter the viewport. Playback pauses
+offscreen and while the document is hidden. One pause/resume button in the header,
+beside the theme control, controls all three. Reduced motion starts with static poses and
+does not download the model; changing the preference during a visit updates playback.
+Direct filesystem opening and failed model/WebGL loading keep the static poses.
+
+Three.js 0.181.2 and the required loader/environment helpers are vendored under
+`js/vendor/three-r181/`, with the MIT license. No package install, build step or
+external model service is needed. The editable source remains in
+`../video_studio/robot-mascot-3d/`; the site uses its own approved asset copy.
+
+With the server on port 4173, `node tools/verify-avatars.cjs` checks placement,
+durations and seams, playback controls, offscreen pause, shared model caching,
+both themes, mobile layout, reduced motion and static fallbacks. It uses the same
+Chrome and `NODE_PATH` setup as the video checks below. Captures and its JSON
+report go to the temporary `portfolio-robot-check` folder.
+
+The previous static avatar cutouts and identity references remain in `assets/avatar/`
+with their original documentation. `assets/portrait.jpg` is also preserved.
 
 ### Regenerating the resume PDF
 

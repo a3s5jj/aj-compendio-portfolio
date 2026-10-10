@@ -585,6 +585,11 @@
     optionalAssets();
     contactForm();
     preloader();
+    if (location.protocol !== 'file:') {
+      import('./robot-avatars.js?v=20261011-2').catch(function (error) {
+        console.warn('Robot animations unavailable; showing static poses.', error);
+      });
+    }
 
     // safety net: if the preloader never ran, the hero still shows
     setTimeout(startHero, 4000);
