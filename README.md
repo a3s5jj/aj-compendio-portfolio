@@ -2,8 +2,8 @@
 
 Personal portfolio for **Al John Compendio**, freelance automation engineer.
 
-Plain HTML, CSS and JavaScript. No build step, no `npm install`, no framework. Every
-animation is hand rolled, the same way the reference site does it.
+Plain HTML, CSS and JavaScript. No build step, no `npm install`, no framework.
+Lenis handles smooth vertical scrolling; section animations use the existing scripts.
 
 ## Run it
 
@@ -178,6 +178,19 @@ The form does nothing when opened from the filesystem. That is expected, and the
 so rather than pretending it sent.
 
 ## Performance and accessibility notes
+
+**Vertical scrolling uses Lenis 1.3.26.** The script, stylesheet and MIT license are
+vendored locally from [Lenis](https://github.com/darkroomengineering/lenis), so scrolling
+also works when opening `index.html` directly. The 1.15-second easing and 1.05 wheel
+multiplier follow the vertical feel of [the reference](https://aadarshrai.vercel.app/).
+Touch scrolling stays native. Lenis respects reduced-motion preferences, including
+changes during a visit, and stops while the intro or project-video modal is open.
+If the script is unavailable, ordinary scrolling and native anchor links still work.
+
+With the local server running, `node tools/verify-scroll.cjs` checks wheel easing,
+section navigation, keyboard scrolling, modal locking, reduced motion, native touch,
+and the missing-library fallback. It uses the same Chrome and `NODE_PATH` setup as
+the video checks below.
 
 **Project videos are local MP4s.** Each project row has a play icon, divider and
 duration. The button opens a native modal with playback, volume, seeking and

@@ -24,6 +24,18 @@
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
+  var scroller = null;
+  function smoothScrolling() {
+    if (typeof window.Lenis !== 'function') return;
+    scroller = new window.Lenis({
+      autoRaf: true,
+      duration: 1.15,
+      wheelMultiplier: 1.05,
+      anchors: true,
+      allowNestedScroll: true
+    });
+  }
+
   /* ===========================================================
      PRELOADER
      =========================================================== */
@@ -53,11 +65,13 @@
       done = true;
       el.classList.add('is-done');
       document.body.classList.remove('is-locked');
+      if (scroller) scroller.start();
       setTimeout(function () { if (el.parentNode) el.remove(); }, 700);
       startHero();
     }
 
     document.body.classList.add('is-locked');
+    if (scroller) scroller.stop();
     window.addEventListener('load', function () {
       setTimeout(finish, reduced ? 0 : Math.max(0, 500 - (Date.now() - started)));
     }, { once: true });
@@ -384,6 +398,7 @@
           track.src = btn.dataset.captions;
           video.appendChild(track);
         }
+        if (scroller) scroller.stop();
         dialog.showModal();
         document.documentElement.classList.add('has-project-video');
         // The native play control remains available if autoplay is blocked.
@@ -403,7 +418,12 @@
       video.replaceChildren();
       video.load();
       document.documentElement.classList.remove('has-project-video');
+      if (scroller) scroller.start();
       returnFocus.focus({ preventScroll: true });
+      if (returnFocus !== sourceButton) {
+        var reduceScroll = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        sourceButton.closest('.project').scrollIntoView({ block: 'center', behavior: reduceScroll ? 'instant' : 'smooth' });
+      }
     });
     video.addEventListener('error', function () { if (dialog.open) error.hidden = false; });
     $('#projectVideoRead').addEventListener('click', function () {
@@ -412,7 +432,6 @@
       returnFocus = card.querySelector('.project__head');
       returnFocus.setAttribute('aria-expanded', 'true');
       dialog.close();
-      card.scrollIntoView({ block: 'center' });
     });
   }
 
@@ -555,6 +574,7 @@
     var y = $('#year');
     if (y) y.textContent = new Date().getFullYear();
 
+    smoothScrolling();
     header();
     clock();
     reveals();

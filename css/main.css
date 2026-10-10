@@ -9,6 +9,9 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Lenis owns easing while active; native anchor scrolling is the fallback. */
+html.lenis { scroll-behavior: auto; }
+
 body {
   margin: 0;
   background: var(--bg-primary);
