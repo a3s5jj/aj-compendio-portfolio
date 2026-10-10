@@ -360,6 +360,62 @@
     });
   }
 
+  function projectVideos() {
+    var dialog = $('#projectVideo');
+    var video = $('#projectVideoPlayer');
+    var error = $('#projectVideoError');
+    var sourceButton;
+    var returnFocus;
+
+    $$('.project__watch').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        sourceButton = returnFocus = btn;
+        $('#projectVideoTitle').textContent = btn.closest('.project').querySelector('.project__title').textContent;
+        error.hidden = true;
+        $('#projectVideoDownload').href = btn.dataset.video;
+        video.poster = btn.dataset.poster;
+        video.src = btn.dataset.video;
+        video.replaceChildren();
+        if (btn.dataset.captions) {
+          var track = document.createElement('track');
+          track.kind = 'captions';
+          track.label = 'English';
+          track.srclang = 'en';
+          track.src = btn.dataset.captions;
+          video.appendChild(track);
+        }
+        dialog.showModal();
+        document.documentElement.classList.add('has-project-video');
+        // The native play control remains available if autoplay is blocked.
+        video.play().catch(function () {});
+      });
+    });
+
+    $('#projectVideoClose').addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (e) {
+      if (e.target !== dialog) return;
+      var rect = dialog.getBoundingClientRect();
+      if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) dialog.close();
+    });
+    dialog.addEventListener('close', function () {
+      video.pause();
+      video.removeAttribute('src');
+      video.replaceChildren();
+      video.load();
+      document.documentElement.classList.remove('has-project-video');
+      returnFocus.focus({ preventScroll: true });
+    });
+    video.addEventListener('error', function () { if (dialog.open) error.hidden = false; });
+    $('#projectVideoRead').addEventListener('click', function () {
+      var card = sourceButton.closest('.project');
+      card.classList.add('is-open');
+      returnFocus = card.querySelector('.project__head');
+      returnFocus.setAttribute('aria-expanded', 'true');
+      dialog.close();
+      card.scrollIntoView({ block: 'center' });
+    });
+  }
+
   /* ===========================================================
      METRIC COUNTERS
      =========================================================== */
@@ -504,6 +560,7 @@
     reveals();
     heroCanvas();
     projects();
+    projectVideos();
     counters();
     optionalAssets();
     contactForm();

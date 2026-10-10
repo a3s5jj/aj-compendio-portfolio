@@ -71,7 +71,7 @@
 }
 </script>
 <link rel="stylesheet" href="css/tokens.css?v=20261009">
-<link rel="stylesheet" href="css/main.css?v=20261009-3">
+<link rel="stylesheet" href="css/main.css?v=20261010-1">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -260,6 +260,7 @@
 
       <!-- PROJECT 01 -->
       <article class="project is-open reveal" data-reveal>
+        <div class="project__row">
         <h3 class="project__heading">
         <button class="project__head" aria-expanded="true">
           <span class="project__idx">PROJECT // 01</span>
@@ -270,6 +271,11 @@
           <span class="project__toggle" aria-hidden="true"></span>
         </button>
         </h3>
+          <button class="project__watch" type="button" aria-label="Play Clinic AI Front Desk video, 30 seconds" aria-haspopup="dialog" aria-controls="projectVideo" data-video="assets/videos/clinic.mp4" data-poster="assets/videos/clinic.jpg" data-captions="assets/videos/clinic.vtt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+            <span class="project__duration">30s</span>
+          </button>
+        </div>
 
         <div class="project__body">
           <div class="project__cols">
@@ -331,6 +337,7 @@
 
       <!-- PROJECT 02 -->
       <article class="project reveal" data-reveal>
+        <div class="project__row">
         <h3 class="project__heading">
         <button class="project__head" aria-expanded="false">
           <span class="project__idx">PROJECT // 02</span>
@@ -341,6 +348,11 @@
           <span class="project__toggle" aria-hidden="true"></span>
         </button>
         </h3>
+          <button class="project__watch" type="button" aria-label="Play Dental AI Front Desk video, 24 seconds" aria-haspopup="dialog" aria-controls="projectVideo" data-video="assets/videos/template.mp4" data-poster="assets/videos/template.jpg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+            <span class="project__duration">24s</span>
+          </button>
+        </div>
 
         <div class="project__body">
           <div class="project__cols">
@@ -399,6 +411,7 @@
 
       <!-- PROJECT 03 -->
       <article class="project reveal" data-reveal>
+        <div class="project__row">
         <h3 class="project__heading">
         <button class="project__head" aria-expanded="false">
           <span class="project__idx">PROJECT // 03</span>
@@ -409,6 +422,11 @@
           <span class="project__toggle" aria-hidden="true"></span>
         </button>
         </h3>
+          <button class="project__watch" type="button" aria-label="Play Dental Lead Qualification video, 29 seconds" aria-haspopup="dialog" aria-controls="projectVideo" data-video="assets/videos/leads.mp4" data-poster="assets/videos/leads.jpg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+            <span class="project__duration">29s</span>
+          </button>
+        </div>
 
         <div class="project__body">
           <div class="project__cols">
@@ -470,6 +488,7 @@
 
       <!-- PROJECT 04 -->
       <article class="project reveal" data-reveal>
+        <div class="project__row">
         <h3 class="project__heading">
         <button class="project__head" aria-expanded="false">
           <span class="project__idx">PROJECT // 04</span>
@@ -480,6 +499,11 @@
           <span class="project__toggle" aria-hidden="true"></span>
         </button>
         </h3>
+          <button class="project__watch" type="button" aria-label="Play Document Intake Automation video, 27 seconds" aria-haspopup="dialog" aria-controls="projectVideo" data-video="assets/videos/documents.mp4" data-poster="assets/videos/documents.jpg" data-captions="assets/videos/documents.vtt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+            <span class="project__duration">27s</span>
+          </button>
+        </div>
 
         <div class="project__body">
           <div class="project__cols">
@@ -538,6 +562,7 @@
 
       <!-- PROJECT 05 -->
       <article class="project reveal" data-reveal>
+        <div class="project__row">
         <h3 class="project__heading">
         <button class="project__head" aria-expanded="false">
           <span class="project__idx">PROJECT // 05</span>
@@ -548,6 +573,11 @@
           <span class="project__toggle" aria-hidden="true"></span>
         </button>
         </h3>
+          <button class="project__watch" type="button" aria-label="Play Inquiry to Quote video, 44 seconds" aria-haspopup="dialog" aria-controls="projectVideo" data-video="assets/videos/quote.mp4" data-poster="assets/videos/quote.jpg" data-captions="assets/videos/quote.vtt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+            <span class="project__duration">44s</span>
+          </button>
+        </div>
 
         <div class="project__body">
           <div class="project__cols">
@@ -908,6 +938,23 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=20261009-3" defer></script>
+<dialog class="project-video" id="projectVideo" aria-labelledby="projectVideoTitle">
+  <div class="project-video__head">
+    <div>
+      <p class="project-video__label">PROJECT OVERVIEW</p>
+      <h2 class="project-video__title" id="projectVideoTitle">Project video</h2>
+    </div>
+    <button class="project-video__close" id="projectVideoClose" type="button" aria-label="Close project video" autofocus>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <video id="projectVideoPlayer" controls playsinline preload="none" aria-label="Project overview video"></video>
+  <p class="project-video__error" id="projectVideoError" role="status" hidden>Video could not load. <a id="projectVideoDownload" download>Download the video</a>.</p>
+  <div class="project-video__foot">
+    <button class="project-video__read" id="projectVideoRead" type="button">Read the project details <span aria-hidden="true">&rarr;</span></button>
+  </div>
+</dialog>
+
+<script src="js/main.js?v=20261010-1" defer></script>
 </body>
 </html>

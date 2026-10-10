@@ -13,8 +13,10 @@ a real host.
 For a proper local server:
 
 ```bash
-npx serve .
+npx serve@14.2.6 . --listen tcp://127.0.0.1:4173 --no-clipboard
 ```
+
+Use this server for the video preview; its byte-range responses support seeking.
 
 ## Layout
 
@@ -176,6 +178,23 @@ The form does nothing when opened from the filesystem. That is expected, and the
 so rather than pretending it sent.
 
 ## Performance and accessibility notes
+
+**Project videos are local MP4s.** Each project row has a play icon, divider and
+duration. The button opens a native modal with playback, volume, seeking and
+fullscreen controls. Escape, the close button or the backdrop stops playback.
+"Read the project details" opens the corresponding accordion and returns focus
+to its heading. No video or poster downloads until a visitor clicks play.
+
+`assets/videos/` holds the four approved 2D explainers and Inquiry to Quote v6,
+all 1080p H.264/AAC with fast-start headers. Narrated videos have optional English
+captions; the template and lead qualification films contain sound effects only.
+The frozen soundtracks and encoded picture streams are preserved when remuxed
+into the site. Sources remain in `../video_studio/`.
+
+With the local site on port 4173, `node tools/verify-videos.cjs` checks all five
+players, seeking, caption loading, accordion independence, focus restoration,
+closing, deferred downloads and mobile layouts. It uses Chrome and an available
+`puppeteer-core` installation via `NODE_PATH`; neither is a site dependency.
 
 These were measured, not assumed. Worth knowing before changing them.
 

@@ -661,6 +661,32 @@ img, svg, canvas { display: block; max-width: 100%; }
   box-shadow: var(--shadow-card), 0 24px 60px -40px var(--accent);
 }
 
+.project__row { position: relative; }
+.project__watch {
+  position: absolute;
+  right: calc(clamp(18px, 3vw, 32px) + 60px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  color: var(--accent-text);
+  cursor: pointer;
+}
+.project__watch:hover { background: var(--accent); color: var(--on-accent); }
+.project__watch svg { width: 16px; height: 16px; }
+.project__duration {
+  border-left: 1px solid currentColor;
+  padding-left: 8px;
+  font: 400 11px/1 var(--font-mono);
+}
+.project__watch:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
 /* The accordion button is wrapped in an h3 for heading order. This strips the
    h3's own typography so the button and its spans style themselves as before. */
 .project__heading {
@@ -676,7 +702,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 .project__head {
   width: 100%;
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr) 40px;
+  grid-template-columns: 120px minmax(0, 1fr) 100px 40px;
   align-items: center;
   gap: 20px;
   padding: 26px clamp(18px, 3vw, 32px);
@@ -707,6 +733,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 .project__sub { font-size: var(--fs-small); color: var(--text-secondary); }
 
 .project__toggle {
+  grid-column: 4;
   position: relative;
   width: 34px; height: 34px;
   border: 1px solid var(--border);
@@ -728,6 +755,42 @@ img, svg, canvas { display: block; max-width: 100%; }
 .project:hover .project__toggle { border-color: var(--accent); }
 .project.is-open .project__toggle { transform: rotate(180deg); border-color: var(--accent); }
 .project.is-open .project__toggle::after { opacity: 0; }
+
+html.has-project-video { overflow: hidden; }
+.project-video {
+  width: min(960px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: 0 20px 90px #0006;
+}
+.project-video::backdrop { background: #080e19cc; }
+.project-video__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; }
+.project-video__label { margin: 0 0 6px; font: 400 11px/1.4 var(--font-mono); color: var(--text-secondary); }
+.project-video__title { margin: 0; font-size: clamp(18px, 3vw, 24px); }
+.project-video__close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.project-video__close svg { width: 20px; height: 20px; }
+.project-video video { display: block; width: 100%; aspect-ratio: 16 / 9; max-height: calc(100dvh - 180px); background: #080e19; object-fit: contain; }
+.project-video__foot { padding: 12px 22px; border-top: 1px solid var(--border); }
+.project-video__read { min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--accent-text); font: inherit; cursor: pointer; }
+.project-video__error { padding: 12px 22px; margin: 0; }
+.project-video__error[hidden] { display: none; }
 
 .project__body {
   display: grid;
@@ -1166,6 +1229,15 @@ img, svg, canvas { display: block; max-width: 100%; }
 @media (max-width: 600px) {
   .section-intro { --intro-avatar-size: 132px; grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .section-intro--contact { --intro-avatar-size: 160px; }
+}
+
+@media (max-width: 760px) {
+  .project__head { grid-template-columns: minmax(0, 1fr) 34px; padding-bottom: 84px; gap: 14px; }
+  .project__idx { grid-column: 1 / -1; padding-top: 0; }
+  .project__toggle { grid-column: 2; }
+  .project__watch { left: clamp(18px, 3vw, 32px); right: auto; top: auto; bottom: 26px; transform: none; }
+  .project-video__head { padding: 15px; }
+  .project-video__foot { padding: 12px 15px; }
 }
 
 @media (max-width: 560px) {
