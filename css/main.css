@@ -25,6 +25,34 @@ body {
 
 body.is-locked { overflow: hidden; }
 
+/* Blend scrolling content into the edges without covering the navigation. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset-inline: 0;
+  height: clamp(72px, 14vh, 144px);
+  z-index: 100;
+  pointer-events: none;
+  opacity: .8;
+}
+body::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg-primary), transparent);
+}
+body::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-primary), transparent);
+}
+
+/* Keep focused controls and their labels at full contrast. */
+body:has(:focus-visible)::before,
+body:has(:focus-visible)::after { display: none; }
+
+@media print, (prefers-reduced-motion: reduce) {
+  body::before, body::after { display: none; }
+}
+
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   color: var(--text-primary);
@@ -361,10 +389,13 @@ img, svg, canvas { display: block; max-width: 100%; }
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
   gap: clamp(32px, 5vw, 72px);
+  row-gap: 24px;
   align-items: center;
   padding-block: clamp(32px, 6vh, 72px);
   flex: 1;
 }
+
+.hero__heading { grid-column: 1 / -1; }
 
 .hero__eyebrow {
   display: inline-flex;
@@ -379,7 +410,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 .tick { width: 22px; height: 1px; background: var(--accent); display: inline-block; }
 
 .hero__title {
-  font-size: clamp(2.25rem, 5.6vw, 5rem);
+  font-size: clamp(4.5rem, 11.2vw, 10rem);
   font-weight: 700;
   line-height: .98;
   letter-spacing: -.035em;
@@ -388,7 +419,7 @@ img, svg, canvas { display: block; max-width: 100%; }
 .hero__title .line { display: block; }
 .hero__title .accent {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--accent-soft);
+  -webkit-text-stroke: clamp(1.5px, .21vw, 3px) var(--accent-soft);
   text-shadow: 0 0 42px var(--accent-glow);
 }
 
@@ -1246,6 +1277,7 @@ html.has-project-video { overflow: hidden; }
 @media (max-width: 560px) {
   .header { gap: 10px; }
   .brand { font-size: .82rem; letter-spacing: .07em; }
+  .hero__title { font-size: clamp(2.5rem, 14.4vw, 4.5rem); }
   /* tighter tracking so the eyebrow stays on one line instead of
      wrapping around the rule that precedes it */
   .hero__eyebrow { letter-spacing: .14em; font-size: 10px; gap: 8px; }
