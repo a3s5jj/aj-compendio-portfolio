@@ -234,6 +234,25 @@ img, svg, canvas { display: block; max-width: 100%; }
   border-bottom-color: var(--border);
 }
 
+.header__identity {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 12px;
+  margin-right: auto;
+}
+.header__socials { display: flex; gap: 4px; }
+.header__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 40px;
+  color: var(--text-secondary);
+}
+.header__social:hover { color: var(--text-primary); }
+.header__social svg { width: 19px; height: 19px; }
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -243,7 +262,6 @@ img, svg, canvas { display: block; max-width: 100%; }
   font-size: .95rem;
   letter-spacing: .12em;
   color: var(--text-primary);
-  margin-right: auto;
   white-space: nowrap;
 }
 .brand:hover { color: var(--text-primary); }
@@ -1287,7 +1305,10 @@ html.has-project-video { overflow: hidden; }
 }
 
 @media (max-width: 560px) {
-  .header { gap: 10px; }
+  .header { gap: 6px; }
+  .header__identity { gap: 8px; }
+  .header__socials { gap: 2px; }
+  .header__social { width: 28px; }
   .brand { font-size: .82rem; letter-spacing: .07em; }
   .hero__title { font-size: clamp(2.5rem, 14.4vw, 4.5rem); }
   /* tighter tracking so the eyebrow stays on one line instead of
@@ -1303,6 +1324,16 @@ html.has-project-video { overflow: hidden; }
   .contact__row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .about__facts li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .footer__inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 360px) {
+  .header { gap: 4px; }
+  .header__identity { gap: 4px; }
+  .header__socials { gap: 0; }
+  .header__social { width: 24px; }
+  .brand { font-size: .72rem; letter-spacing: .04em; }
+  .theme-toggle { min-width: 36px; width: 36px; padding: 8px; }
+  .burger { width: 36px; }
 }
 
 /* ============================================================
